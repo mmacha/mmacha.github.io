@@ -142,7 +142,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    left: 0;
    top: 0;
 }
-.opaque { background-color: #444; }
+.opaque { background-color: #277ed080; }
 
 /* hide toggle button */
 #nav-wrap > a.mobile-btn { display: none; }
@@ -189,7 +189,7 @@ ul#nav li.current a { color: #F06000; }
 /* ------------------------------------------------------------------ */
 
 #about {
-   background: #2B2B2B;
+   background: #1d1616;
    padding-top: 96px;
    padding-bottom: 36px;
    overflow: hidden;
@@ -237,7 +237,7 @@ ul#nav li.current a { color: #F06000; }
 
 #about p {
    line-height: 25px;
-   color: #9A9A9A;
+   color: #ffff;
 }
 
 #about ul {
@@ -252,7 +252,7 @@ ul#nav li.current a { color: #F06000; }
 
 #about .profile-pic {
    position: relative;
-   width: 120px;
+   width: 160px;
    height: 120px;
    border-radius: 100%;
 }
@@ -264,7 +264,7 @@ ul#nav li.current a { color: #F06000; }
 #about .main-col { padding-right: 5%; }
 #about .download .button {
    margin-top: 6px;
-   background: #444;
+   background: #277ed080;
 }
 #about .download .button:hover {
    background: #fff;

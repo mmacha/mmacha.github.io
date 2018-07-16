@@ -145,7 +145,7 @@ body {
    background: #fff;
    font-family: 'opensans-regular', sans-serif;
    font-weight: normal;
-   font-size: 15px;
+   font-size: 16px;
    line-height: 30px;
 	color: #838C95;
 
@@ -449,8 +449,9 @@ dd { margin: 0 0 0 20px; }
 /*  5. Images  --------------------------------------------------------- */
 
 img {
-   max-width: 100%;
+   max-width: 125%;
    height: auto;
+   transform: rotate(-90deg);    
 }
 img.pull-right { margin: 12px 0px 0px 18px; }
 img.pull-left { margin: 12px 18px 0px 0px; }

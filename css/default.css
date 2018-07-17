@@ -451,7 +451,14 @@ dd { margin: 0 0 0 20px; }
 img {
    max-width: 100%;
    height: auto;
-   transform: rotate(-90deg);    
+}
+
+.rotate90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 img.pull-right { margin: 12px 0px 0px 18px; }
 img.pull-left { margin: 12px 18px 0px 0px; }
@@ -647,6 +654,7 @@ input[type="checkbox"] { display: inline; }
 .row .ten         { width: 83.33333%; }
 .row .eleven      { width: 91.66667%; }
 .row .twelve      { width: 100%; }
+.row .thirteen      { width: 130%; }
 
 /* Offsets */
 .row .offset-1    { margin-left: 8.33333%; }

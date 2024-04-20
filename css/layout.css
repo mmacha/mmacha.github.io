@@ -188,92 +188,134 @@ ul#nav li.current a { color: #F06000; }
 /* c. About Section
 /* ------------------------------------------------------------------ */
 
+/* Base styles for the About section */
 #about {
-   background: #1d1616;
-   padding-top: 96px;
-   padding-bottom: 36px;
-   overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;  /* Light grey background */
+    padding: 50px 20px;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Ensures no overflow of child elements */
 }
-
-#about a, #about a:visited  { color: #fff; }
-#about a:hover, #about a:focus { color: #11ABB0; }
-
 
 #about h1 {
-   font: 30px/40px 'opensans', sans-serif;
-   color: #fff;
-   margin-bottom: 12px;
+    text-align: center;
+    color: #FF5733; /* Change to the desired color */
 }
 
-#about .name {
-   font: 30px/40px 'librebaskerville-italic', sans-serif;
-   color: #fff;
-   margin-bottom: 12px;
+#about h2.subtitle {
+    color: #009688; /* Change to the desired color */
 }
 
-#about h2 {
-   font: 22px/30px 'opensans-bold', sans-serif;
-   color: #fff;
-   margin-bottom: 12px;
+/* Responsive row setup using flexbox */
+#about .row {
+    display: flex;
+    flex-direction: column;  /* Stacks children vertically on all screen sizes */
+    align-items: center;
+    width: 100%;
+    max-width: 960px;  /* Maximum width to center content and manage sizing */
+    margin-top: 20px;
+    border: 1px solid #ccc;  /* Light border to highlight the flex container */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);  /* Shadow for depth */
+    background-color: #ffffff;  /* White background for content */
+    padding-bottom: 50px;  /* Adjusted space for absolute elements at the bottom */
 }
 
-#about .news {
-   font: 22px/30px 'opensans-bold', sans-serif;
-   color: #EA5B0C;
-   margin-bottom: 12px;
+/* Profile picture container */
+#about .three.columns {
+    width: 100%;  /* Full width on mobile */
+    max-width: 300px;  /* Maximum width of image container */
+    padding: 20px;  /* Padding around image */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Centering content */
+    align-items: center; /* Aligning content vertically */
 }
 
-#about .cmured {
-   font: 22px/30px 'opensans-bold', sans-serif;
-   color: #990000;
-   margin-bottom: 12px;
+/* Main content container adjustments */
+#about .nine.columns.main-col {
+    width: 100%;  /* Full width on mobile */
+    padding: 20px; /* Adequate padding around the content */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative; /* Essential for absolute positioning of elements inside */
+    overflow: visible; /* Allows for overflown elements to be visible */
+    min-height: 300px; /* Minimum height to prevent zero height on small screens */
 }
 
-#about .cmuyellow {
-   font: 22px/30px 'opensans-bold', sans-serif;
-   color: #c1a562;
-   margin-bottom: 12px;
-}
-
-#about p {
-   line-height: 25px;
-   color: #ffff;
-}
-
-#about ul {
-   line-height: 25px;
-   color: #9A9A9A;
-}
-
-#about li {
-   line-height: 25px;
-   color: #fff;
-}
-
-#about .profile-pic {
-   position: relative;
-   width: 160px;
-   height: 120px;
-   border-radius: 100%;
-}
-#about .contact-details { width: 41.66667%; }
 #about .download {
-   width: 58.33333%;
-   padding-top: 6px;
+    text-align: center;  /* Centers the button within this container */
+    margin-top: 20px;  /* Space from the last paragraph to this section */
+    padding-top: 10px;  /* Padding top for spacing inside the container */
+    margin-bottom: 10px; /* Add a bottom margin to create space between this section and the next */
+    width: 100%;  /* Make sure it occupies the full width */
 }
-#about .main-col { padding-right: 5%; }
-#about .download .button {
-   margin-top: 6px;
-   background: #277ed080;
+
+#about .social {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0; /* Remove margin */
+    width: 100%;  /* Make sure it occupies the full width */
 }
-#about .download .button:hover {
-   background: #fff;
-   color: #2B2B2B;
+
+#about .social li {
+    margin: 0 15px;  /* Adequate spacing for touch targets */
+    display: inline-block;
 }
-#about .download .button i {
-   margin-right: 15px;
-   font-size: 20px;
+
+#about .social i {
+    font-size: 1.5em;
+    color: #2980b9;
+    transition: color 0.3s;
 }
+
+#about .social i:hover {
+    color: #3498db;
+}
+
+
+@media (max-width: 768px) {
+    #about .row {
+        padding-bottom: 20px;  /* Sufficient padding to accommodate elements */
+    }
+
+    #about .three.columns, #about .nine.columns.main-col {
+        width: 100%;  /* Full width adjustment for small screens */
+    }
+
+    #about .three.columns {
+        order: 1; /* Keeps the image on top */
+    }
+
+    #about .nine.columns.main-col {
+        order: 2; /* Content follows the image */
+    }
+
+    #about .download, #about .social {
+        position: static;  /* Removes absolute positioning for better flow */
+        margin-top: 20px;  /* Added margin-top for spacing */
+        width: 100%;  /* Full width for center alignment */
+        text-align: center;  /* Centers the contents */
+        flex-wrap: wrap;
+    }
+
+    #about .download .button, #about .social li {
+        display: inline-block;  /* Inline display for better control */
+    }
+    
+    #about .social li {
+        margin: 10px; /* Adjust margin between social icons */
+    }
+    
+}
+
+
+
+
 
 
 /* ------------------------------------------------------------------ */

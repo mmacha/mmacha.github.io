@@ -246,11 +246,15 @@ ul#nav li.current a { color: #F06000; }
 }
 
 #about .download {
-    text-align: center;  /* Centers the button within this container */
+    text-align: center;  /* Ensures the button text and items are centered */
+    display: flex;
+    flex-direction: column; /* Aligns children (button and text) in a column */
+    align-items: center;  /* Centers the items horizontally */
+    justify-content: center; /* Centers items vertically, useful if flex-direction is row */
     margin-top: 20px;  /* Space from the last paragraph to this section */
     padding-top: 10px;  /* Padding top for spacing inside the container */
-    margin-bottom: 10px; /* Add a bottom margin to create space between this section and the next */
-    width: 100%;  /* Make sure it occupies the full width */
+    margin-bottom: 10px; /* Space below the container */
+    width: 100%;  /* Full width to maintain alignment with other sections */
 }
 
 #about .social {
@@ -280,38 +284,40 @@ ul#nav li.current a { color: #F06000; }
 
 @media (max-width: 768px) {
     #about .row {
-        padding-bottom: 20px;  /* Sufficient padding to accommodate elements */
+        padding-bottom: 20px;  /* Adjusts padding to fit content */
     }
 
     #about .three.columns, #about .nine.columns.main-col {
-        width: 100%;  /* Full width adjustment for small screens */
+        width: 100%;  /* Sets full width on smaller screens */
     }
 
     #about .three.columns {
-        order: 1; /* Keeps the image on top */
+        order: 1;  /* Image on top */
     }
 
     #about .nine.columns.main-col {
-        order: 2; /* Content follows the image */
+        order: 2;  /* Text follows image */
     }
 
     #about .download, #about .social {
-        position: static;  /* Removes absolute positioning for better flow */
-        margin-top: 20px;  /* Added margin-top for spacing */
-        width: 100%;  /* Full width for center alignment */
-        text-align: center;  /* Centers the contents */
-        flex-wrap: wrap;
+        margin-top: 20px;  /* Extra space for clarity */
+        text-align: center;  /* Ensures content is centered */
+        display: flex;
+        justify-content: center; /* Horizontally centers the flex children */
+        flex-direction: column;  /* Stacks button and links vertically */
+        width: 100%;  /* Full width for alignment */
     }
 
     #about .download .button, #about .social li {
-        display: inline-block;  /* Inline display for better control */
+        display: block;  /* Each item takes a full line */
+        margin: 10px auto; /* Centers items horizontally with automatic margins */
     }
-    
+
     #about .social li {
-        margin: 10px; /* Adjust margin between social icons */
+        margin: 10px auto; /* Adjusts margins for each social icon for centering */
     }
-    
 }
+
 
 
 

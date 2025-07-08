@@ -135,6 +135,213 @@
         .dark-mode .text-gray-500 {
             color: #a0aec0 !important;
         }
+
+        /* Enhanced mobile menu styles - matching index.html */
+        .mobile-menu {
+            display: block;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 60;
+            padding: 5rem 1.5rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.show {
+            right: 0;
+        }
+
+        .dark-mode .mobile-menu {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 55;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #2d3748;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 70;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover, .mobile-menu-close:active {
+            transform: rotate(90deg);
+            background-color: rgba(66, 153, 225, 0.1);
+        }
+
+        .dark-mode .mobile-menu-close {
+            color: #e2e8f0;
+        }
+
+        .mobile-nav-link {
+            position: relative;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .mobile-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgba(66, 153, 225, 0.1);
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+
+        .mobile-nav-link:hover::before, .mobile-nav-link:active::before {
+            width: 100%;
+        }
+
+        .mobile-nav-link.active {
+            color: #4299e1;
+            font-weight: 600;
+            background-color: rgba(66, 153, 225, 0.1);
+        }
+
+        .dark-mode .mobile-nav-link.active {
+            color: #63b3ed;
+            background-color: rgba(99, 179, 237, 0.15);
+        }
+
+        .mobile-nav-link.touching {
+            background-color: rgba(66, 153, 225, 0.15);
+            transform: scale(0.98);
+        }
+
+        #mobileMenuBtn {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        #mobileMenuBtn:hover {
+            background-color: rgba(66, 153, 225, 0.1);
+        }
+
+        .dark-mode #mobileMenuBtn:hover {
+            background-color: rgba(99, 179, 237, 0.15);
+        }
+
+        /* Active Navigation Indicator Styles - matching index.html */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+            opacity: 0;
+        }
+
+        .nav-link:hover::after {
+            width: 20px;
+            opacity: 0.5;
+        }
+
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 30px;
+            opacity: 1;
+            background: linear-gradient(90deg, #3b82f6, #93c5fd);
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+        }
+
+        .dark-mode .nav-link::after {
+            background: #60a5fa;
+        }
+
+        .dark-mode .nav-link.active {
+            color: #60a5fa;
+        }
+
+        .dark-mode .nav-link.active::after {
+            background: linear-gradient(90deg, #60a5fa, #93c5fd);
+            box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+        }
+
+        /* Mobile Navigation Indicator - matching index.html */
+        .mobile-nav-link {
+            position: relative;
+        }
+
+        .mobile-nav-link.active {
+            color: #3b82f6;
+            background-color: rgba(219, 234, 254, 0.1);
+            border-radius: 4px;
+        }
+
+        .mobile-nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 70%;
+            background: #3b82f6;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .dark-mode .mobile-nav-link.active {
+            color: #60a5fa;
+            background-color: rgba(30, 58, 138, 0.2);
+        }
+
+        .dark-mode .mobile-nav-link.active::before {
+            background: #60a5fa;
+        }
         
         /* Navigation improvements */
         @media (max-width: 1000px) {
@@ -188,170 +395,6 @@
             display: flex;
             align-items: center;
             gap: 24px;
-        }
-        
-        .nav-link {
-            color: #2d3748;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-        
-        .nav-link:hover {
-            background: #f1f5f9;
-            color: #3182ce;
-        }
-        
-        .nav-link.active {
-            background: #3182ce;
-            color: white;
-        }
-        
-        .dark-mode .nav-link {
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .nav-link:hover {
-            background: #4a5568;
-            color: #60a5fa;
-        }
-        
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #2d3748;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 8px;
-        }
-        
-        .dark-mode .mobile-menu-toggle {
-            color: #e2e8f0;
-        }
-        
-        /* Mobile Menu Styles */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s ease;
-            z-index: 200;
-            padding: 0;
-        }
-        
-        .dark-mode .mobile-menu {
-            background: #2d3748;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .mobile-menu.show {
-            right: 0;
-        }
-        
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 150;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .dark-mode .mobile-menu-header {
-            border-bottom-color: #4a5568;
-        }
-        
-        .mobile-menu-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2d3748;
-        }
-        
-        .dark-mode .mobile-menu-title {
-            color: #e2e8f0;
-        }
-        
-        .mobile-menu-close {
-            background: none;
-            border: none;
-            color: #2d3748;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 4px;
-        }
-        
-        .dark-mode .mobile-menu-close {
-            color: #e2e8f0;
-        }
-        
-        .mobile-nav-links {
-            padding: 20px 0;
-        }
-        
-        .mobile-nav-link {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            color: #2d3748;
-            text-decoration: none;
-            transition: all 0.2s;
-            gap: 12px;
-        }
-        
-        .mobile-nav-link:hover {
-            background: #f1f5f9;
-            color: #3182ce;
-        }
-        
-        .mobile-nav-link.active {
-            background: #e3f2fd;
-            color: #3182ce;
-            border-right: 4px solid #3182ce;
-        }
-        
-        .dark-mode .mobile-nav-link {
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .mobile-nav-link:hover {
-            background: #4a5568;
-            color: #60a5fa;
-        }
-        
-        .dark-mode .mobile-nav-link.active {
-            background: #1e40af;
-            color: white;
-            border-right-color: #60a5fa;
-        }
-        
-        .mobile-nav-link i {
-            font-size: 16px;
-            width: 20px;
-            text-align: center;
         }
         
         .logo {
@@ -1558,6 +1601,119 @@
                 closeMobileMenu();
             });
         }
+        
+        // Enhanced mobile menu functionality - matching index.html
+        // Use existing variables from above
+        
+        // Function to open mobile menu
+        function openMobileMenu() {
+            mobileMenu.classList.add('show');
+            mobileMenuOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+        
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('show');
+            mobileMenuOverlay.classList.remove('show');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', openMobileMenu);
+        }
+        
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+        }
+        
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+        
+        // Close mobile menu when a link is clicked
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link:not(#mobileDarkModeToggle)');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+        
+        // Close menu when escape key is pressed
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mobileMenu.classList.contains('show')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Active section highlighting for navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function highlightNavLink() {
+            const scrollY = window.pageYOffset;
+        
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    mobileNavLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to current section links
+                    document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
+                    document.querySelector(`.mobile-nav-link[href="#${sectionId}"]`)?.classList.add('active');
+                }
+            });
+        }
+
+        if (sections.length > 0) {
+            window.addEventListener('scroll', highlightNavLink);
+            
+            // Initialize active section on page load
+            highlightNavLink();
+        }
+        
+        // Handle clicks on navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('show')) {
+                        closeMobileMenu();
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add touch support for mobile navigation
+        document.querySelectorAll('.mobile-nav-link, #mobileMenuBtn, .mobile-menu-close')
+            .forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.classList.add('touching');
+                }, { passive: true });
+                
+                item.addEventListener('touchend', function() {
+                    this.classList.remove('touching');
+                }, { passive: true });
+                
+                item.addEventListener('touchcancel', function() {
+                    this.classList.remove('touching');
+                }, { passive: true });
+            });
     </script>
     
     <!-- Calendly widget script -->

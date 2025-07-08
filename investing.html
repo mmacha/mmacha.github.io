@@ -1475,12 +1475,11 @@
                 }
             }
             
-            // Update mobile toggle icon
+            // Update mobile toggle icon and text - matching index.html
             if (mobileDarkModeToggle) {
-                const icon = mobileDarkModeToggle.querySelector('i');
-                if (icon) {
-                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                }
+                mobileDarkModeToggle.innerHTML = isDark ? 
+                    '<i class="fas fa-sun mr-3 text-blue-600"></i><span>Light Mode</span>' : 
+                    '<i class="fas fa-moon mr-3 text-blue-600"></i><span>Dark Mode</span>';
             }
             
             // Update floating toggle icon

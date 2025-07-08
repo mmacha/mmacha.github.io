@@ -134,7 +134,17 @@
         }
         
         .dark-mode .mobile-menu {
-            background-color: #2d3748 !important;
+            background-color: #1a202c !important;
+            color: #e2e8f0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .dark-mode .mobile-menu .border-gray-200 {
+            border-color: #4a5568;
+        }
+        
+        .dark-mode .mobile-menu .text-gray-500 {
+            color: #a0aec0;
         }
         
         .dark-mode #darkModeToggle {
@@ -179,7 +189,7 @@
         }
 
         .dark-mode .mobile-menu {
-            background-color: #1a202c;
+            background-color: #1a202c !important;
             color: #e2e8f0;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
         }
@@ -1624,117 +1634,7 @@
         }
         
         // Enhanced mobile menu functionality - matching index.html
-        // Use existing variables from above
-        
-        // Function to open mobile menu
-        function openMobileMenu() {
-            mobileMenu.classList.add('show');
-            mobileMenuOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-        }
-        
-        // Function to close mobile menu
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('show');
-            mobileMenuOverlay.classList.remove('show');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-        
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', openMobileMenu);
-        }
-        
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', closeMobileMenu);
-        }
-        
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-        }
-        
-        // Close mobile menu when a link is clicked
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link:not(#mobileDarkModeToggle)');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMobileMenu();
-            });
-        });
-        
-        // Close menu when escape key is pressed
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && mobileMenu.classList.contains('show')) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Active section highlighting for navigation
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        function highlightNavLink() {
-            const scrollY = window.pageYOffset;
-        
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 100;
-                const sectionId = section.getAttribute('id');
-                
-                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    mobileNavLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to current section links
-                    document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
-                    document.querySelector(`.mobile-nav-link[href="#${sectionId}"]`)?.classList.add('active');
-                }
-            });
-        }
-
-        if (sections.length > 0) {
-            window.addEventListener('scroll', highlightNavLink);
-            
-            // Initialize active section on page load
-            highlightNavLink();
-        }
-        
-        // Handle clicks on navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Close mobile menu if open
-                    if (mobileMenu.classList.contains('show')) {
-                        closeMobileMenu();
-                    }
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Add touch support for mobile navigation
-        document.querySelectorAll('.mobile-nav-link, #mobileMenuBtn, .mobile-menu-close')
-            .forEach(item => {
-                item.addEventListener('touchstart', function() {
-                    this.classList.add('touching');
-                }, { passive: true });
-                
-                item.addEventListener('touchend', function() {
-                    this.classList.remove('touching');
-                }, { passive: true });
-                
-                item.addEventListener('touchcancel', function() {
-                    this.classList.remove('touching');
-                }, { passive: true });
-            });
+        // Note: Using existing variables from the first mobile menu section above
     </script>
     
     <!-- Calendly widget script -->

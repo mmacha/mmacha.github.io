@@ -985,14 +985,14 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #3182ce 0%, #60a5fa 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
             color: white;
             border: none;
             border-radius: 50%;
             width: 56px;
             height: 56px;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(49, 130, 206, 0.4);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
             z-index: 1000;
             transition: all 0.3s ease;
             opacity: 0;
@@ -1007,8 +1007,9 @@
         }
         
         .floating-dark-toggle:hover {
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(49, 130, 206, 0.6);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
         }
         
         .floating-dark-toggle i {
@@ -1016,12 +1017,13 @@
         }
         
         .dark-mode .floating-dark-toggle {
-            background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
-            box-shadow: 0 4px 20px rgba(74, 85, 104, 0.4);
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
         }
         
         .dark-mode .floating-dark-toggle:hover {
-            box-shadow: 0 8px 25px rgba(74, 85, 104, 0.6);
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            box-shadow: 0 6px 25px rgba(217, 119, 6, 0.6);
         }
         
         /* Fix mobile overlap issue on small screens */

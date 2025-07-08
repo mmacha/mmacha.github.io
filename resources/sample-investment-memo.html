@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample AI Investment Memo (Redacted)</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section h2 {
+            background: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0052cc;
+        }
+        .redacted {
+            background: #333;
+            color: #333;
+            padding: 2px 4px;
+        }
+        .risk-high {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .risk-medium {
+            color: #f57c00;
+            font-weight: bold;
+        }
+        .risk-low {
+            color: #388e3c;
+            font-weight: bold;
+        }
+        .recommendation {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Technical Due Diligence Memo</h1>
+        <p><strong>Target Company:</strong> <span class="company-name">[REDACTED] AI Platform</span></p>
+        <p><strong>Date:</strong> [REDACTED]</p>
+        <p><strong>Prepared by:</strong> Meghanath Macha</p>
+        <p><strong>Confidential & Proprietary</strong></p>
+    </div>
+
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <p>This memo provides a comprehensive technical assessment of <span class="redacted">[COMPANY NAME]</span>, a Series A startup developing AI-powered content generation platform. The 72-hour audit revealed several critical technical and architectural concerns that significantly impact the investment thesis.</p>
+        
+        <div class="recommendation">
+            <strong>Recommendation:</strong> <span class="risk-high">PASS</span> - Recommend waiting for Series B after technical debt is addressed and proprietary data moats are established.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Architecture Assessment</h2>
+        
+        <h3>Core Platform Analysis</h3>
+        <ul>
+            <li><strong>Model Architecture:</strong> Heavy reliance on <span class="redacted">[REDACTED]</span> foundation models with minimal fine-tuning</li>
+            <li><strong>Data Pipeline:</strong> <span class="risk-high">HIGH RISK</span> - Weak data ingestion and processing capabilities</li>
+            <li><strong>Scalability:</strong> <span class="risk-medium">MEDIUM RISK</span> - Current architecture supports <span class="redacted">[REDACTED]</span> concurrent users</li>
+            <li><strong>Infrastructure:</strong> <span class="risk-low">LOW RISK</span> - Adequate cloud infrastructure with proper monitoring</li>
+        </ul>
+
+        <h3>Key Technical Concerns</h3>
+        <ol>
+            <li><strong>Over-reliance on External APIs:</strong> <span class="redacted">[REDACTED]</span>% of core functionality depends on third-party model providers</li>
+            <li><strong>Limited Proprietary Data:</strong> No clear strategy for building defensible data assets</li>
+            <li><strong>Technical Debt:</strong> Significant shortcuts in <span class="redacted">[REDACTED]</span> modules affecting maintainability</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Competitive Moat Analysis</h2>
+        
+        <h3>Current Moats</h3>
+        <ul>
+            <li><span class="risk-low">✓</span> Strong engineering team with <span class="redacted">[REDACTED]</span> years experience</li>
+            <li><span class="risk-medium">~</span> Growing customer base in <span class="redacted">[REDACTED]</span> vertical</li>
+            <li><span class="risk-high">✗</span> Limited technical differentiation from competitors</li>
+        </ul>
+
+        <h3>Potential Future Moats</h3>
+        <ul>
+            <li>Proprietary training data from customer interactions</li>
+            <li>Domain-specific model fine-tuning capabilities</li>
+            <li>Advanced prompt engineering and optimization</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Risk Assessment</h2>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr style="background: #f5f5f5;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Risk Factor</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Level</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Mitigation</th>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Technical Debt</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><span class="risk-high">HIGH</span></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Requires 6-month refactoring initiative</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Vendor Lock-in</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><span class="risk-high">HIGH</span></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Develop multi-provider strategy</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">Scalability</td>
+                <td style="padding: 10px; border: 1px solid #ddd;"><span class="risk-medium">MEDIUM</span></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Implement horizontal scaling</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Financial Impact Analysis</h2>
+        <p>Based on the technical assessment, the following financial implications are identified:</p>
+        <ul>
+            <li><strong>Technical Debt Cost:</strong> Estimated <span class="redacted">$[REDACTED]</span> over 12 months</li>
+            <li><strong>Infrastructure Scaling:</strong> <span class="redacted">$[REDACTED]</span> additional monthly costs at 10x growth</li>
+            <li><strong>Team Expansion:</strong> Need for <span class="redacted">[REDACTED]</span> additional senior engineers</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Recommendations</h2>
+        <div class="recommendation">
+            <p><strong>Primary Recommendation:</strong> <span class="risk-high">PASS on current round</span></p>
+            <p><strong>Rationale:</strong> While the team shows promise, the technical foundation requires significant investment to achieve defensible competitive position.</p>
+        </div>
+        
+        <h3>Conditions for Future Investment</h3>
+        <ol>
+            <li>Demonstrate proprietary data acquisition strategy</li>
+            <li>Complete technical debt remediation</li>
+            <li>Achieve multi-provider model architecture</li>
+            <li>Show clear path to technical differentiation</li>
+        </ol>
+    </div>
+
+    <div class="footer">
+        <p>This document contains confidential and proprietary information. Distribution is restricted to authorized personnel only.</p>
+        <p>© 2024 Meghanath Macha - Technical Due Diligence Services</p>
+    </div>
+</body>
+</html>

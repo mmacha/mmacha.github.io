@@ -31,11 +31,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Font Awesome Subset - optimized for performance -->
+    <style>
+        /* Font Awesome subset styles - only the icons we need */
+        .fas {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .fa-moon:before { content: "\f186"; }
+        .fa-sun:before { content: "\f185"; }
+        .fa-bars:before { content: "\f0c9"; }
+        .fa-times:before { content: "\f00d"; }
+        .fa-search:before { content: "\f002"; }
+        .fa-users:before { content: "\f0c0"; }
+        .fa-bolt:before { content: "\f0e7"; }
+        .fa-download:before { content: "\f019"; }
+        .fa-home:before { content: "\f015"; }
+        .fa-user:before { content: "\f007"; }
+        .fa-robot:before { content: "\f544"; }
+        .fa-flask:before { content: "\f0c3"; }
+        .fa-chart-line:before { content: "\f201"; }
+        .fa-envelope:before { content: "\f0e0"; }
+        .fa-cogs:before { content: "\f085"; }
+        .fa-brain:before { content: "\f5dc"; }
+        .fa-shield-alt:before { content: "\f3ed"; }
+        .fa-sitemap:before { content: "\f0e8"; }
+        .fa-lightbulb:before { content: "\f0eb"; }
+        .fa-clock:before { content: "\f017"; }
+        .fa-graduation-cap:before { content: "\f19d"; }
+        .fa-arrow-up:before { content: "\f062"; }
+        
+        /* Load only the Font Awesome 6 Free Solid font */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/webfonts/fa-solid-900.woff2') format('woff2');
+        }
+    </style>
     
     <!-- Tailwind CSS for navigation consistency -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     
     <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8M2DJ91XGL"></script>
@@ -977,6 +1024,13 @@
             box-shadow: 0 8px 25px rgba(74, 85, 104, 0.6);
         }
         
+        /* Fix mobile overlap issue on small screens */
+        @media (max-width: 390px) {
+            .floating-dark-toggle {
+                bottom: 80px;
+            }
+        }
+        
         /* Floating scroll to top toggle */
         .floating-scroll-top {
             position: fixed;
@@ -1188,26 +1242,31 @@
     <section class="services">
         <div class="container">
             <h2 class="section-title">Services</h2>
+            <div style="text-align: center; margin-bottom: 32px;">
+                <a href="resources/fractional-diligence-overview.html" target="_blank" rel="noopener" title="120 KB" style="color: #3182ce; text-decoration: none; font-weight: 600;">
+                    <i class="fas fa-download" style="margin-right: 8px;"></i>Download Service Brief (PDF, 120 KB)
+                </a>
+            </div>
             <div class="services-grid">
                 <div class="service-card featured">
                     <i class="fas fa-search" style="font-size: 24px; color: #3182ce; margin-bottom: 16px;"></i>
                     <h3 class="service-title">Technical Due Diligence</h3>
                     <p class="service-description">Comprehensive review of ML architecture, codebase quality, infrastructure costs, and technical debt. Includes team assessment and scalability analysis.</p>
-                    <p class="service-price">Project-based • 5-7 days</p>
+                    <p class="service-price">Flat fee &bull; <strong>$7–10k</strong></p>
                 </div>
                 
                 <div class="service-card">
                     <i class="fas fa-users" style="font-size: 24px; color: #3182ce; margin-bottom: 16px;"></i>
                     <h3 class="service-title">Technical Advisory</h3>
                     <p class="service-description">Ongoing technical guidance for portfolio companies. Monthly check-ins, architecture reviews, and hiring support.</p>
-                    <p class="service-price">Monthly Retainer</p>
+                    <p class="service-price">Monthly retainer &bull; <strong>$3–5k</strong></p>
                 </div>
                 
                 <div class="service-card">
                     <i class="fas fa-bolt" style="font-size: 24px; color: #3182ce; margin-bottom: 16px;"></i>
                     <h3 class="service-title">Quick Technical Screen</h3>
                     <p class="service-description">High-level technical assessment to identify major red flags or validate core technical claims before deeper diligence.</p>
-                    <p class="service-price">Fixed Fee • 48-72 hours</p>
+                    <p class="service-price">Fixed fee &bull; <strong>$1–2k</strong></p>
                 </div>
             </div>
         </div>
@@ -1218,25 +1277,25 @@
         <div class="container">
             <h2 class="section-title">Engagement Process</h2>
             <div class="process-steps">
-                <div class="process-step" aria-label="Step 1: Initial briefing">
+                <div class="process-step" aria-label="Step 1">
                     <div class="step-icon" aria-hidden="true">1</div>
                     <h3 class="step-title">Initial Call</h3>
                     <p class="step-description">Understand investment context and key technical concerns</p>
                 </div>
                 
-                <div class="process-step" aria-label="Step 2: Technical review">
+                <div class="process-step" aria-label="Step 2">
                     <div class="step-icon" aria-hidden="true">2</div>
                     <h3 class="step-title">Technical Review</h3>
                     <p class="step-description">Code review, architecture assessment, and team interviews</p>
                 </div>
                 
-                <div class="process-step" aria-label="Step 3: Analysis and report">
+                <div class="process-step" aria-label="Step 3">
                     <div class="step-icon" aria-hidden="true">3</div>
                     <h3 class="step-title">Analysis</h3>
                     <p class="step-description">Risk assessment, competitive benchmarking, and scalability projections</p>
                 </div>
                 
-                <div class="process-step" aria-label="Step 4: Deliverable and discussion">
+                <div class="process-step" aria-label="Step 4">
                     <div class="step-icon" aria-hidden="true">4</div>
                     <h3 class="step-title">Deliverable</h3>
                     <p class="step-description">Detailed report with findings, risks, and recommendations</p>
@@ -1289,7 +1348,7 @@
             <h2 class="cta-title">Let's Discuss Your Due Diligence Needs</h2>
             <p class="cta-subtitle">Schedule a confidential consultation to explore how I can support your investment decisions</p>
             
-            <a href="https://calendly.com/meghanath-macha" class="cta-button" target="_blank">Schedule 30-Min Call</a>
+            <a class="cta-button" href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/meghanath-macha/30min?utm_source=investing'});return false;">Book 30-Min Call</a>
             
             
             <div class="contact-info">
@@ -1306,7 +1365,7 @@
             <div class="footer-content">
                 <p>&copy; 2024 Meghanath Macha. All rights reserved.</p>
                 <div class="footer-links">
-                    <a href="resources/fractional-diligence-overview.html" target="_blank">Download Service Brief (PDF, 120KB)</a>
+                    <a href="resources/fractional-diligence-overview.html" target="_blank" rel="noopener" title="120 KB">Download Service Brief (PDF, 120 KB)</a>
                 </div>
             </div>
         </div>
@@ -1498,5 +1557,8 @@
             });
         }
     </script>
+    
+    <!-- Calendly widget script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
 </body>
 </html>

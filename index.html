@@ -2393,34 +2393,7 @@
         }
     </style>
     
-    <!-- Add CSS for new scroll features -->
     <style>
-        /* Scroll progress indicator styles */
-        #scroll-progress-container {
-            height: 3px;
-            background-color: rgba(0,0,0,0.1);
-        }
-        .dark-mode #scroll-progress-container {
-            background-color: rgba(255,255,255,0.1);
-        }
-        #scroll-progress-bar {
-            background: linear-gradient(90deg, #3b82f6, #93c5fd);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        .dark-mode #scroll-progress-bar {
-            background: linear-gradient(90deg, #60a5fa, #3b82f6);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-        }
-        
-        /* Back to top button styles */
-        #back-to-top {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .dark-mode #back-to-top {
-            background-color: #3b82f6;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-        
         /* Enhanced section reveal */
         section {
             opacity: 0.8;
@@ -2929,6 +2902,7 @@
                     <!-- <a href="#vision" class="hover:text-blue-600 nav-link">Leadership</a> -->
                     <!-- <a href="#advisory" class="hover:text-blue-600 nav-link">Advisory</a> -->
                     <a href="#research" class="hover:text-blue-600 nav-link">Research</a>
+                    <a href="investing.html" class="hover:text-blue-600 nav-link">Investing</a>
                     <a href="#contact" class="hover:text-blue-600 nav-link">Contact</a>
                     <button id="darkModeToggle" class="hover:text-blue-600">
                         <i class="fas fa-moon"></i>
@@ -2972,6 +2946,10 @@
                     <a href="#research" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-flask mr-3 text-blue-600"></i>
                         <span>Research</span>
+                    </a>
+                    <a href="investing.html" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-chart-line mr-3 text-blue-600"></i>
+                        <span>Investing</span>
                     </a>
                     <a href="#contact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-envelope mr-3 text-blue-600"></i>
@@ -3244,7 +3222,7 @@
         </section>
     
     <!-- Leadership Vision Section -->
-    <section id="vision" class="py-20 bg-gray-50 reveal-section" style="display: none;>
+    <section id="vision" class="py-20 bg-gray-50 reveal-section" style="display: none;">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 text-center section-heading">AI Leadership Vision</h2>
             
@@ -3705,10 +3683,6 @@
         </div>
     </footer>
 
-    <!-- Add scroll to top button -->
-    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
 
     <!-- Modern JavaScript -->
     <script>
@@ -3732,7 +3706,8 @@
             if (mobileDarkModeToggle) mobileDarkModeToggle.innerHTML = '<i class="fas fa-sun mr-3 text-blue-600"></i><span>Light Mode</span>';
         }
         
-        function toggleDarkMode() {
+        // Make toggleDarkMode global so floating toggle can access it
+        window.toggleDarkMode = function() {
             body.classList.toggle('dark-mode');
             const isDarkMode = body.classList.contains('dark-mode');
             
@@ -3750,7 +3725,7 @@
             
             // Store preference
             localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-        }
+        };
         
         // Check for saved dark mode preference (if not already initialized)
         if (!isDarkModeInitialized) {
@@ -3768,11 +3743,11 @@
         
         // Add event listeners only if elements exist
         if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', toggleDarkMode);
+            darkModeToggle.addEventListener('click', window.toggleDarkMode);
         }
         
         if (mobileDarkModeToggle) {
-            mobileDarkModeToggle.addEventListener('click', toggleDarkMode);
+            mobileDarkModeToggle.addEventListener('click', window.toggleDarkMode);
         }
         
             // Improved Mobile Menu functionality
@@ -3873,25 +3848,6 @@
                 day: 'numeric'
             });
         
-            // Scroll to top function
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            if (scrollToTopBtn) {
-                scrollToTopBtn.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-                
-                // Show/hide scroll to top button
-                window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 300) {
-                        scrollToTopBtn.classList.add('visible');
-                    } else {
-                        scrollToTopBtn.classList.remove('visible');
-                    }
-                });
-            }
             
             // Collapsible Cards functionality
         const cardHeaders = document.querySelectorAll('.card-header');
@@ -4060,274 +4016,7 @@
         }
     </script>
     
-    <!-- Enhanced Scrolling Experience Implementation -->
-    <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 z-50 bg-transparent">
-        <div id="scroll-progress-bar" class="h-full bg-blue-600 transition-all duration-300 ease-out" style="width: 0%"></div>
-    </div>
     
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg z-50 opacity-0 invisible transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transform hover:scale-110">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
-    <script>
-        // Enhanced Scrolling Experience
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elements
-            const scrollProgress = document.getElementById('scroll-progress-bar');
-            const backToTopBtn = document.getElementById('back-to-top');
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-            
-            // Calculate document height properly
-            const getDocHeight = () => {
-                const body = document.body;
-                const html = document.documentElement;
-                
-                return Math.max(
-                    body.scrollHeight, body.offsetHeight,
-                    html.clientHeight, html.scrollHeight, html.offsetHeight
-                ) - window.innerHeight;
-            };
-            
-            // Update scroll progress and highlight current section in navigation
-            const updateScrollProgress = () => {
-                const scrollTop = window.scrollY;
-                const docHeight = getDocHeight();
-                const scrollPercent = (scrollTop / docHeight) * 100;
-                
-                scrollProgress.style.width = scrollPercent + '%';
-                
-                // Show/hide back to top button
-                if (scrollTop > 600) {
-                    backToTopBtn.classList.remove('opacity-0', 'invisible');
-                    backToTopBtn.classList.add('opacity-100');
-                } else {
-                    backToTopBtn.classList.remove('opacity-100');
-                    backToTopBtn.classList.add('opacity-0', 'invisible');
-                }
-                
-                // Enhance reveal animations as you scroll
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - window.innerHeight * 0.7;
-                    
-                    if (scrollTop > sectionTop) {
-                        section.classList.add('in-view');
-                    }
-                });
-                
-                // Highlight the current section in navigation
-                sections.forEach(section => {
-                    if (!section.hasAttribute('id')) return;
-                    
-                    const sectionHeight = section.offsetHeight;
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollTop > sectionTop && scrollTop <= sectionTop + sectionHeight) {
-                        // Highlight desktop nav
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                        
-                        // Highlight mobile nav
-                        mobileNavLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            };
-            
-            // Implement smooth scrolling for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (!targetElement) return;
-                    
-                    const targetPosition = targetElement.offsetTop - 80; // Accounting for fixed header
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update URL without page jump
-                    history.pushState(null, null, targetId);
-                    
-                    // Add active class to clicked nav link
-                    if (this.classList.contains('nav-link')) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        this.classList.add('active');
-                    } else if (this.classList.contains('mobile-nav-link')) {
-                        mobileNavLinks.forEach(link => link.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Back to top button click handler
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-            
-            // Add smooth reveal effect to sections
-            sections.forEach(section => {
-                section.classList.add('transition-opacity', 'duration-700');
-            });
-            
-            // Listen for scroll events
-            window.addEventListener('scroll', updateScrollProgress);
-            
-            // Initial call to set correct states
-            updateScrollProgress();
-        });
-    </script>
-    
-    <!-- Add CSS for new scroll features -->
-    <style>
-        /* Scroll progress indicator styles */
-        #scroll-progress-container {
-            height: 3px;
-            background-color: rgba(0,0,0,0.1);
-        }
-        .dark-mode #scroll-progress-container {
-            background-color: rgba(255,255,255,0.1);
-        }
-        #scroll-progress-bar {
-            background: linear-gradient(90deg, #3b82f6, #93c5fd);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        .dark-mode #scroll-progress-bar {
-            background: linear-gradient(90deg, #60a5fa, #3b82f6);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
-        }
-        
-        /* Back to top button styles */
-        #back-to-top {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .dark-mode #back-to-top {
-            background-color: #3b82f6;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-        
-        /* Enhanced section reveal */
-        section {
-            opacity: 0.8;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.8s ease-out;
-        }
-        section.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Add a subtle highlight effect to active section */
-        section:target {
-            animation: highlight 1.5s ease-out;
-        }
-        @keyframes highlight {
-            0% { background-color: transparent; }
-            10% { background-color: rgba(59, 130, 246, 0.05); }
-            100% { background-color: transparent; }
-        }
-        .dark-mode section:target {
-            animation: highlight-dark 1.5s ease-out;
-        }
-        @keyframes highlight-dark {
-            0% { background-color: transparent; }
-            10% { background-color: rgba(59, 130, 246, 0.1); }
-            100% { background-color: transparent; }
-        }
-        
-        /* Active Navigation Indicator Styles */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #3b82f6;
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-            opacity: 0;
-        }
-        
-        .nav-link:hover::after {
-            width: 20px;
-            opacity: 0.5;
-        }
-        
-        .nav-link.active {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-        
-        .nav-link.active::after {
-            width: 30px;
-            opacity: 1;
-            background: linear-gradient(90deg, #3b82f6, #93c5fd);
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
-        }
-        
-        .dark-mode .nav-link::after {
-            background: #60a5fa;
-        }
-        
-        .dark-mode .nav-link.active {
-            color: #60a5fa;
-        }
-        
-        .dark-mode .nav-link.active::after {
-            background: linear-gradient(90deg, #60a5fa, #93c5fd);
-            box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
-        }
-        
-        /* Mobile Navigation Indicator */
-        .mobile-nav-link {
-            position: relative;
-        }
-        
-        .mobile-nav-link.active {
-            color: #3b82f6;
-            background-color: rgba(219, 234, 254, 0.1);
-            border-radius: 4px;
-        }
-        
-        .dark-mode .mobile-nav-link.active {
-            color: #60a5fa;
-            background-color: rgba(30, 58, 138, 0.2);
-        }
-        
-        .mobile-nav-link.touching {
-            background-color: rgba(66, 153, 225, 0.15);
-            transform: scale(0.98);
-        }
-        
-        .dark-mode .mobile-nav-link.active::before {
-            background: #60a5fa;
-        }
     </style>
     
     <!-- Added JavaScript to implement modern card design with micro-interactions -->
@@ -4802,6 +4491,207 @@
                             }, 1000);
                         }
                     }, 10000);
+                });
+            }
+        });
+    </script>
+
+    <!-- Floating Dark Mode Toggle -->
+    <div id="floating-dark-toggle" class="floating-dark-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon dark-icon"></i>
+        <i class="fas fa-sun light-icon"></i>
+    </div>
+
+    <!-- Floating Scroll to Top -->
+    <div id="floating-scroll-top" class="floating-scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <style>
+        /* Floating Dark Mode Toggle */
+        .floating-dark-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3182ce 0%, #60a5fa 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .floating-dark-toggle.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .floating-dark-toggle:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+
+        .floating-dark-toggle:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .floating-dark-toggle i {
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .floating-dark-toggle .light-icon {
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        body.dark-mode .floating-dark-toggle .dark-icon {
+            opacity: 0;
+            transform: rotate(-180deg);
+        }
+
+        body.dark-mode .floating-dark-toggle .light-icon {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
+        body.dark-mode .floating-dark-toggle {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        body.dark-mode .floating-dark-toggle:hover {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+        }
+
+        /* Floating Scroll to Top */
+        .floating-scroll-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .floating-scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .floating-scroll-top:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        .floating-scroll-top:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        .floating-scroll-top i {
+            font-size: 20px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .floating-scroll-top {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        }
+
+        body.dark-mode .floating-scroll-top:hover {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+    </style>
+
+    <script>
+        // Floating Toggles Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingDarkToggle = document.getElementById('floating-dark-toggle');
+            const floatingScrollTop = document.getElementById('floating-scroll-top');
+            
+            // Show/hide floating toggles based on scroll position
+            function handleFloatingTogglesVisibility() {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                
+                if (scrollPosition > windowHeight * 0.3) {
+                    if (floatingDarkToggle) {
+                        floatingDarkToggle.classList.add('visible');
+                    }
+                    if (floatingScrollTop) {
+                        floatingScrollTop.classList.add('visible');
+                    }
+                } else {
+                    if (floatingDarkToggle) {
+                        floatingDarkToggle.classList.remove('visible');
+                    }
+                    if (floatingScrollTop) {
+                        floatingScrollTop.classList.remove('visible');
+                    }
+                }
+            }
+
+            // Throttled scroll event listener
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        handleFloatingTogglesVisibility();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll);
+
+            // Dark mode toggle functionality
+            if (floatingDarkToggle) {
+                floatingDarkToggle.addEventListener('click', function() {
+                    // Use the existing toggleDarkMode function
+                    if (typeof window.toggleDarkMode === 'function') {
+                        window.toggleDarkMode();
+                    }
+                });
+            }
+
+            // Scroll to top functionality
+            if (floatingScrollTop) {
+                floatingScrollTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             }
         });

@@ -276,15 +276,349 @@
         
         .hero-gradient {
             background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated gradient background - mobile-optimized */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                rgba(59, 130, 246, 0.1) 0%,
+                rgba(147, 197, 253, 0.1) 25%,
+                rgba(59, 130, 246, 0.05) 50%,
+                rgba(30, 64, 175, 0.1) 75%,
+                rgba(59, 130, 246, 0.1) 100%
+            );
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+            z-index: 1;
+        }
+        
+        .hero-gradient > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Dark mode animated gradient with smoother transitions */
+        .dark-mode .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1a202c 50%, #1e293b 100%);
+        }
+        
+        /* Gradient sections with better color harmony */
+        .dark-mode .advisory-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #1a202c 100%);
+        }
+        
+        .dark-mode .contact-gradient {
+            background: linear-gradient(135deg, #171923 0%, #1e293b 100%);
+        }
+        
+        .dark-mode #vision {
+            background: linear-gradient(135deg, #1a202c 0%, #171923 100%);
+        }
+        
+        .dark-mode #research {
+            background: linear-gradient(180deg, #1e293b 0%, #1a202c 100%);
+        }
+        
+        .dark-mode .hero-gradient::before {
+            background: linear-gradient(
+                45deg,
+                rgba(96, 165, 250, 0.08) 0%,
+                rgba(147, 197, 253, 0.05) 25%,
+                rgba(59, 130, 246, 0.03) 50%,
+                rgba(30, 64, 175, 0.05) 75%,
+                rgba(96, 165, 250, 0.08) 100%
+            );
+        }
+        
+        /* Floating profile image animation */
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .profile-image-float {
+            animation: floatAnimation 6s ease-in-out infinite;
+            will-change: transform;
+        }
+        
+        /* Mobile-optimized floating animation */
+        @media (max-width: 768px) {
+            .profile-image-float {
+                animation: floatAnimation 8s ease-in-out infinite;
+            }
+            
+            @keyframes floatAnimation {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-5px); }
+            }
+        }
+        
+        /* Text reveal animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        .content-reveal {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            will-change: opacity, transform;
+        }
+        
+        .content-reveal.delay-1 { animation-delay: 0.1s; }
+        .content-reveal.delay-2 { animation-delay: 0.3s; }
+        .content-reveal.delay-3 { animation-delay: 0.5s; }
+        .content-reveal.delay-4 { animation-delay: 0.7s; }
+        .content-reveal.delay-5 { animation-delay: 0.9s; }
+        
+        /* Section reveal on scroll */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Enhanced hover states for links */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+            background: linear-gradient(to right, #3b82f6, #60a5fa) no-repeat;
+            background-size: 0% 2px;
+            background-position: left bottom;
+            transition: background-size 0.3s ease, color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-size: 100% 2px;
+        }
+        
+        .dark-mode .nav-link {
+            background-image: linear-gradient(to right, #60a5fa, #93c5fd);
+        }
+        
+        /* Improved social icon animations */
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Mobile touch-friendly hover states */
+        @media (hover: none) and (pointer: coarse) {
+            .social-icon:active {
+                transform: scale(0.95);
+            }
+            
+            .nav-link:active {
+                color: #3b82f6;
+            }
+        }
+        
+        /* Scroll indicator animation */
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+        
+        
+        /* Hide on very small screens */
+        @media (max-width: 480px) {
+            .scroll-companion {
+                display: none;
+            }
+        }
+        
+        /* Side Progress Indicators */
+        .progress-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .progress-nav.show {
+            opacity: 1;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.3);
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .progress-dot:hover {
+            background-color: rgba(59, 130, 246, 0.6);
+            transform: scale(1.2);
+        }
+        
+        .progress-dot.active {
+            background-color: #3b82f6;
+            transform: scale(1.3);
+        }
+        
+        .progress-label {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        
+        .progress-dot:hover .progress-label {
+            opacity: 1;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .progress-nav {
+                right: 1rem;
+            }
+            
+            .progress-dot {
+                width: 8px;
+                height: 8px;
+                margin: 0.75rem 0;
+            }
+            
+            /* Avatar size is now controlled by the main styles */
+        }
+        
+        
+        .dark-mode .progress-dot {
+            background-color: rgba(96, 165, 250, 0.3);
+        }
+        
+        .dark-mode .progress-dot.active {
+            background-color: #60a5fa;
+        }
+        
+        .dark-mode .progress-label {
+            background: #334155;
         }
         .dark-mode {
             background-color: #121212;
             color: #e2e8f0;
         }
-        .dark-mode .bg-white,
-        .dark-mode .bg-gray-50,
-        .dark-mode .bg-gray-100 {
+        
+        /* Alternating section backgrounds for better visual separation */
+        .dark-mode .bg-white {
+            background-color: #1a202c;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .dark-mode .bg-gray-50 {
             background-color: #1e293b;
+        }
+        
+        .dark-mode .bg-gray-100 {
+            background-color: #171923;
+            background-image: linear-gradient(180deg, transparent 0%, rgba(30, 41, 59, 0.3) 100%);
+        }
+        
+        /* Smooth transition overlays between sections */
+        .dark-mode section {
+            position: relative;
+        }
+        
+        .dark-mode section.bg-white::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(180deg, transparent 0%, #1a202c 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Light mode section backgrounds with subtle variations */
+        section.bg-white {
+            background-color: #ffffff;
+        }
+        
+        section.bg-gray-50 {
+            background-color: #f9fafb;
+        }
+        
+        section.bg-gray-100 {
+            background-color: #f3f4f6;
+            background-image: linear-gradient(180deg, transparent 0%, rgba(249, 250, 251, 0.5) 100%);
         }
         .dark-mode .text-gray-600, .dark-mode .text-gray-500, .dark-mode .text-gray-700 {
             color: #cbd5e1 !important;
@@ -537,30 +871,7 @@
             transform: scale(1.05);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
         }
-        .dark-mode .mt-16 {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            position: relative;
-            overflow: hidden;
-            padding: 3rem 1.5rem;
-            border-radius: 0.5rem;
-            margin-top: 4rem;
-        }
-        
-        .dark-mode .mt-16::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.15), transparent 70%);
-            z-index: 0;
-        }
-        
-        .dark-mode .mt-16 > * {
-            position: relative;
-            z-index: 1;
-        }
+        /* Removed mt-16 dark mode background to prevent double backgrounds */
         
         .dark-mode .mt-16 .section-heading {
             color: #f8fafc;
@@ -1644,14 +1955,47 @@
             }
             
             .timeline-year {
-                position: absolute;
-                top: 4px;
-                right: 0;
+                position: relative;
+                display: inline-block;
+                margin-top: 0.5rem;
                 font-size: 0.85rem;
                 font-weight: 600;
                 color: #4299e1;
-            transition: all 0.3s ease;
-        }
+                transition: all 0.3s ease;
+                background-color: rgba(59, 130, 246, 0.1);
+                padding: 0.25rem 0.75rem;
+                border-radius: 1rem;
+                white-space: nowrap;
+            }
+            
+            /* Desktop: Position dates to the right */
+            @media (min-width: 1024px) {
+                .timeline-year {
+                    position: absolute;
+                    top: 4px;
+                    right: 0;
+                    margin-top: 0;
+                    background-color: transparent;
+                    padding: 0;
+                }
+                
+                /* Ensure content doesn't overlap with dates */
+                .timeline-item h4 {
+                    padding-right: 7rem;
+                }
+            }
+            
+            /* Tablet and smaller screens: Keep stacked layout */
+            @media (max-width: 1023px) {
+                .timeline-item {
+                    padding-right: 0 !important;
+                }
+                
+                .timeline-item h4 {
+                    padding-right: 0 !important;
+                    margin-bottom: 0.25rem;
+                }
+            }
         
             .timeline-item:hover {
                 transform: translateX(5px);
@@ -1775,6 +2119,13 @@
             
             .dark-mode .timeline-year {
                 color: #90cdf4;
+                background-color: rgba(96, 165, 250, 0.2);
+            }
+            
+            @media (min-width: 1024px) {
+                .dark-mode .timeline-year {
+                    background-color: transparent;
+                }
             }
             
             .dark-mode .edu-exp-card {
@@ -2599,6 +2950,11 @@
             margin-left: auto;
             margin-right: auto;
             width: 100%; /* Full width instead of fit-content */
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
         
         .section-heading::after {
@@ -2612,6 +2968,13 @@
             background: linear-gradient(90deg, #3b82f6, #93c5fd);
             border-radius: 3px;
             transition: width 0.3s ease;
+            animation: shimmerLine 3s ease infinite;
+        }
+        
+        @keyframes shimmerLine {
+            0% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
+            50% { transform: translateX(-50%) scaleX(1.2); opacity: 1; }
+            100% { transform: translateX(-50%) scaleX(1); opacity: 0.8; }
         }
         
         .dark-mode .section-heading {
@@ -2890,19 +3253,40 @@
         <!-- <div class="loading-bar"></div> -->
     </div>
     
+    <!-- Side Progress Navigation -->
+    <nav class="progress-nav" id="progressNav">
+        <div class="progress-dot" data-section="about">
+            <span class="progress-label">Home</span>
+        </div>
+        <div class="progress-dot" data-section="bio">
+            <span class="progress-label">About Me</span>
+        </div>
+        <div class="progress-dot" data-section="ai-impact">
+            <span class="progress-label">AI Impact</span>
+        </div>
+        <div class="progress-dot" data-section="research">
+            <span class="progress-label">Research</span>
+        </div>
+        <div class="progress-dot" data-section="contact">
+            <span class="progress-label">Contact</span>
+        </div>
+    </nav>
+    
     <!-- Navigation -->
     <nav class="fixed w-full bg-white shadow-md z-50">
         <div class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <div class="text-xl font-bold">Meghanath Macha</div>
+                <div class="flex items-center">
+                    <div class="text-xl font-bold">Meghanath Macha</div>
+                </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#about" class="hover:text-blue-600 nav-link">Home</a>
                     <a href="#bio" class="hover:text-blue-600 nav-link">Bio</a>
                     <a href="#ai-impact" class="hover:text-blue-600 nav-link">AI Impact</a>
-                    <!-- <a href="#vision" class="hover:text-blue-600 nav-link">Leadership</a> -->
+                    <a href="#vision" class="hover:text-blue-600 nav-link">Leadership</a>
                     <!-- <a href="#advisory" class="hover:text-blue-600 nav-link">Advisory</a> -->
                     <a href="#research" class="hover:text-blue-600 nav-link">Research</a>
-                    <a href="investing.html" class="hover:text-blue-600 nav-link">Investing</a>
+                    <!-- <a href="investing.html" class="hover:text-blue-600 nav-link">Investing</a> -->
                     <a href="#contact" class="hover:text-blue-600 nav-link">Contact</a>
                     <button id="darkModeToggle" class="hover:text-blue-600">
                         <i class="fas fa-moon"></i>
@@ -2935,10 +3319,10 @@
                         <i class="fas fa-robot mr-3 text-blue-600"></i>
                         <span>AI Impact</span>
                     </a>
-                    <!-- <a href="#vision" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                    <a href="#vision" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-chart-line mr-3 text-blue-600"></i>
                         <span>Leadership</span>
-                    </a> -->
+                    </a>
                     <!-- <a href="#advisory" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-users mr-3 text-blue-600"></i>
                         <span>Advisory</span>
@@ -2947,10 +3331,10 @@
                         <i class="fas fa-flask mr-3 text-blue-600"></i>
                         <span>Research</span>
                     </a>
-                    <a href="investing.html" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                    <!-- <a href="investing.html" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-chart-line mr-3 text-blue-600"></i>
                         <span>Investing</span>
-                    </a>
+                    </a> -->
                     <a href="#contact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
                         <i class="fas fa-envelope mr-3 text-blue-600"></i>
                         <span>Contact</span>
@@ -2967,12 +3351,15 @@
         </div>
     </nav>
 
+    <!-- Progress Navigation (hidden, for compatibility) -->
+    <div id="progressNav" class="progress-nav" style="display: none;"></div>
+
     <!-- Hero Section -->
     <section id="about" class="hero-gradient text-white pt-20 md:pt-32 pb-16 md:pb-20 relative reveal-section">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0 content-reveal delay-1">
-                    <img src="images/macha.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105" loading="lazy">
+                    <img src="images/macha.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover profile-image-float transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105" loading="lazy">
                 </div>
                 <div class="w-full md:w-2/3 md:pl-12">
                     <!-- Hero Content -->
@@ -2988,13 +3375,13 @@
                                 <i class="fas fa-download mr-2"></i>Resume <span class="text-xs italic">(update coming soon)</span>
                             </a> -->
                             <div class="flex space-x-4">
-                                <a href="https://www.linkedin.com/in/meghanathmacha/" class="text-white hover:text-yellow-300 transition-all transform hover:scale-125">
+                                <a href="https://www.linkedin.com/in/meghanathmacha/" class="social-icon text-white hover:text-yellow-300">
                                     <i class="fab fa-linkedin text-2xl"></i>
                                 </a>
-                                <a href="https://scholar.google.co.in/citations?user=XNzyEd0AAAAJ&hl=en" class="text-white hover:text-yellow-300 transition-all transform hover:scale-125">
+                                <a href="https://scholar.google.co.in/citations?user=XNzyEd0AAAAJ&hl=en" class="social-icon text-white hover:text-yellow-300">
                                     <i class="ai ai-google-scholar text-2xl"></i>
                                 </a>
-                                <a href="https://bsky.app/profile/hereismacha.bsky.social" class="text-white hover:text-yellow-300 transition-all transform hover:scale-125">
+                                <a href="https://bsky.app/profile/hereismacha.bsky.social" class="social-icon text-white hover:text-yellow-300">
                                     <i class="fas fa-cloud text-2xl"></i>
                                 </a>
                                 <div class="relative group">
@@ -3013,13 +3400,16 @@
                     </div>
                 </div>
             </div>
-         </div>
-
-        <div class="scroll-indicator mt-8 md:mt-16 flex flex-col items-center justify-center w-full">
-            <a href="#bio" class="text-white opacity-80 hover:opacity-100 transition-all hover:transform hover:scale-110 flex flex-col items-center">
-                <span class="mb-2 text-sm md:text-base font-medium">Learn More</span>
-                <i class="fas fa-chevron-down text-xl md:text-2xl animate-bounce"></i>
-            </a>
+            
+            <!-- Centered Learn More indicator -->
+            <div class="mt-12 md:mt-16">
+                <div class="flex flex-col items-center justify-center">
+                    <a href="#bio" class="text-white opacity-80 hover:opacity-100 transition-all hover:transform hover:scale-110 flex flex-col items-center group">
+                        <span class="mb-2 text-sm md:text-base font-medium">Learn More</span>
+                        <i class="fas fa-chevron-down text-xl md:text-2xl animate-bounce"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3151,7 +3541,7 @@
         
             
     <!-- AI Impact Section -->
-    <section id="ai-impact" class="py-20 bg-white bg-gray-100 reveal-section">
+    <section id="ai-impact" class="py-20 bg-gray-100 reveal-section">
             <div class="container mx-auto px-6">
                 <div>
                     <h2 class="text-3xl font-bold mb-12 text-center section-heading">AI Impact</h2>
@@ -3222,9 +3612,10 @@
         </section>
     
     <!-- Leadership Vision Section -->
-    <section id="vision" class="py-20 bg-gray-50 reveal-section" style="display: none;">
+    <section id="vision" class="py-20 bg-white reveal-section">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 text-center section-heading">AI Leadership Vision</h2>
+            <p class="text-lg text-center mb-12 max-w-3xl mx-auto animate-fade-in" style="animation-delay: 0.1s;">My philosophy and strategic approach to leading AI initiatives that balance technical innovation with business impact and responsible deployment.</p>
             
             <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg vision-card hover:shadow-xl transition-all transform hover:scale-[1.02]">
                 <div class="mb-8">
@@ -4689,6 +5080,83 @@
                     });
                 });
             }
+            
+            // Section reveal animations on scroll
+            const revealSections = document.querySelectorAll('.reveal-section');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                
+                revealSections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const revealPoint = windowHeight - 100;
+                    
+                    if (sectionTop < revealPoint) {
+                        section.classList.add('active');
+                    }
+                });
+            };
+            
+            // Scroll handler is now combined with sticky avatar and progress nav below
+            
+            // Initial check
+            revealOnScroll();
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '#0') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Basic setup
+            const heroSection = document.getElementById('about');
+            const progressNav = document.getElementById('progressNav');
+            
+            // Progress Navigation Functionality (stub for compatibility)
+            const progressDots = document.querySelectorAll('.progress-dot');
+            
+            function updateProgressNav() {
+                // Stub function - progress nav is hidden
+                // Keeping this for compatibility with existing scroll handler
+            }
+            
+            // Combined scroll handler for performance
+            let scrollTimer;
+            
+            function handleScroll() {
+                if (scrollTimer) {
+                    window.cancelAnimationFrame(scrollTimer);
+                }
+                scrollTimer = window.requestAnimationFrame(() => {
+                    updateProgressNav();
+                    revealOnScroll();
+                });
+            }
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Initial setup
+            window.addEventListener('load', () => {
+                updateProgressNav();
+            });
+            
+            // Also update on DOM ready
+            updateProgressNav();
         });
     </script>
 </body>

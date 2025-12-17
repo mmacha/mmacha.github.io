@@ -49,6 +49,34 @@
             color: #e2e8f0;
         }
         
+        /* Pre-apply dark mode to all sections to prevent flash */
+        .dark-mode-init .bg-white,
+        .dark-mode .bg-white {
+            background-color: #1a202c !important;
+        }
+        
+        .dark-mode-init .bg-gray-50,
+        .dark-mode .bg-gray-50 {
+            background-color: #1e293b !important;
+        }
+        
+        .dark-mode-init .bg-gray-100,
+        .dark-mode .bg-gray-100 {
+            background-color: #171923 !important;
+        }
+        
+        /* Ensure section text colors are correct in dark mode */
+        .dark-mode-init section,
+        .dark-mode section {
+            color: #e2e8f0;
+        }
+        
+        /* Fix specific section backgrounds */
+        .dark-mode-init #bio,
+        .dark-mode #bio {
+            background-color: #1a202c !important;
+        }
+        
         /* Enhanced loading screen with MM logo */
         .page-transition-overlay {
             position: fixed;
@@ -424,6 +452,7 @@
             transform: translateY(0);
         }
         
+        
         /* Enhanced hover states for links */
         .nav-link {
             position: relative;
@@ -576,17 +605,11 @@
         
         /* Alternating section backgrounds for better visual separation */
         .dark-mode .bg-white {
-            background-color: #1a202c;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        .dark-mode .bg-gray-50 {
-            background-color: #1e293b;
-        }
-        
         .dark-mode .bg-gray-100 {
-            background-color: #171923;
             background-image: linear-gradient(180deg, transparent 0%, rgba(30, 41, 59, 0.3) 100%);
         }
         
@@ -3359,7 +3382,7 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0 content-reveal delay-1">
-                    <img src="images/macha.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover profile-image-float transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105" loading="lazy">
+                    <img src="images/macha_new.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover profile-image-float transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105" loading="lazy">
                 </div>
                 <div class="w-full md:w-2/3 md:pl-12">
                     <!-- Hero Content -->

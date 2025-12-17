@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Due Diligence for AI Investments | Meghanath Macha</title>
+    <meta name="description" content="Technical due diligence for AI/ML investments. Deep expertise in production ML systems, infrastructure scalability, and technical risk assessment for VCs and PE firms.">
+    <meta name="author" content="Meghanath Macha">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mmacha.github.io/investing.html">
+    <meta property="og:title" content="Technical Due Diligence for AI Investments | Meghanath Macha">
+    <meta property="og:description" content="Technical due diligence for AI/ML investments. Deep expertise in production ML systems, infrastructure scalability, and technical risk assessment.">
+    <meta property="og:image" content="https://mmacha.github.io/images/profilepic4.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mmacha.github.io/investing.html">
+    <meta property="twitter:title" content="Technical Due Diligence for AI Investments | Meghanath Macha">
+    <meta property="twitter:description" content="Technical due diligence for AI/ML investments. Deep expertise in production ML systems and technical risk assessment.">
+    <meta property="twitter:image" content="https://mmacha.github.io/images/profilepic4.jpg">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://assets.calendly.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8M2DJ91XGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8M2DJ91XGL');
+    </script>
+    
+    <!-- Dark mode script -->
+    <script>
+        (function() {
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'enabled') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #ffffff;
+            font-size: 16px;
+        }
+        
+        .dark-mode {
+            background: #1a202c;
+            color: #e2e8f0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+        
+        .dark-mode .header {
+            background: #2d3748;
+            border-bottom-color: #4a5568;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-link {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: #f1f5f9;
+            color: #3182ce;
+        }
+        
+        .nav-link.active {
+            background: #3182ce;
+            color: white;
+        }
+        
+        .dark-mode .nav-link {
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .nav-link:hover {
+            background: #4a5568;
+            color: #60a5fa;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #2d3748;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .dark-mode .mobile-menu-toggle {
+            color: #e2e8f0;
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 200;
+            padding: 0;
+        }
+        
+        .dark-mode .mobile-menu {
+            background: #2d3748;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-menu.show {
+            right: 0;
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .dark-mode .mobile-menu-header {
+            border-bottom-color: #4a5568;
+        }
+        
+        .mobile-menu-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .dark-mode .mobile-menu-title {
+            color: #e2e8f0;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: #2d3748;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .dark-mode .mobile-menu-close {
+            color: #e2e8f0;
+        }
+        
+        .mobile-nav-links {
+            padding: 20px 0;
+        }
+        
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            color: #2d3748;
+            text-decoration: none;
+            transition: all 0.2s;
+            gap: 12px;
+        }
+        
+        .mobile-nav-link:hover {
+            background: #f1f5f9;
+            color: #3182ce;
+        }
+        
+        .mobile-nav-link.active {
+            background: #e3f2fd;
+            color: #3182ce;
+            border-right: 4px solid #3182ce;
+        }
+        
+        .dark-mode .mobile-nav-link {
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .mobile-nav-link:hover {
+            background: #4a5568;
+            color: #60a5fa;
+        }
+        
+        .dark-mode .mobile-nav-link.active {
+            background: #1e40af;
+            color: white;
+            border-right-color: #60a5fa;
+        }
+        
+        .mobile-nav-link i {
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            text-decoration: none;
+        }
+        
+        .dark-mode .logo {
+            color: #e2e8f0;
+        }
+        
+        .header-cta {
+            background: #3182ce;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        
+        .header-cta:hover {
+            background: #2c5282;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        }
+        
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+        
+        .dark-mode .hero h1 {
+            color: #f7fafc;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #4a5568;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        
+        .dark-mode .hero-subtitle {
+            color: #a0aec0;
+        }
+        
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .credential-item {
+            text-align: center;
+        }
+        
+        .credential-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #3182ce;
+            display: block;
+        }
+        
+        .credential-label {
+            font-size: 14px;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        .dark-mode .credential-label {
+            color: #a0aec0;
+        }
+        
+        .hero-cta {
+            background: #3182ce;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+        }
+        
+        .hero-cta:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(49, 130, 206, 0.4);
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                padding: 60px 0;
+            }
+            .credentials {
+                gap: 24px;
+            }
+            .credential-number {
+                font-size: 28px;
+            }
+            .hero-cta {
+                padding: 16px 32px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #1a202c;
+        }
+        
+        .dark-mode .section-title {
+            color: #f7fafc;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .dark-mode .service-card {
+            background: #2d3748;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card.featured {
+            border-color: #3182ce;
+            position: relative;
+        }
+        
+        .service-card.featured::before {
+            content: "MOST REQUESTED";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3182ce;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .service-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1a202c;
+        }
+        
+        .dark-mode .service-title {
+            color: #f7fafc;
+        }
+        
+        .service-description {
+            color: #374151;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .dark-mode .service-description {
+            color: #a0aec0;
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: #3182ce;
+            font-size: 14px;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+        
+        .dark-mode .process {
+            background: #2d3748;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: #3182ce;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a202c;
+        }
+        
+        .dark-mode .step-title {
+            color: #f7fafc;
+        }
+        
+        .step-description {
+            font-size: 14px;
+            color: #4a5568;
+        }
+        
+        .dark-mode .step-description {
+            color: #a0aec0;
+        }
+        
+        /* Credentials Section */
+        .credentials-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .companies {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .company-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a5568;
+            opacity: 0.8;
+        }
+        
+        .dark-mode .company-logo {
+            color: #a0aec0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 40px auto 0;
+            max-width: 600px;
+            border-left: 4px solid #3182ce;
+        }
+        
+        .dark-mode .testimonial {
+            background: #2d3748;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #2d3748;
+        }
+        
+        .dark-mode .testimonial-text {
+            color: #e2e8f0;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #3182ce;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .cta-subtitle {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #3182ce;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-info {
+            margin-top: 32px;
+            opacity: 0.9;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 500;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 640px) {
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 16px;
+            }
+            .contact-info a {
+                display: block;
+                margin: 8px 0;
+            }
+        }
+        
+        /* Footer */
+        .footer {
+            background: #f7fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+        
+        .dark-mode .footer {
+            background: #2d3748;
+            border-top-color: #4a5568;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .footer-content p {
+            color: #4a5568;
+            margin: 0;
+        }
+        
+        .dark-mode .footer-content p {
+            color: #a0aec0;
+        }
+        
+        .footer-links a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 640px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Expertise Section */
+        .expertise-section {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+        
+        .dark-mode .expertise-section {
+            background: #2d3748;
+        }
+        
+        .expertise-content {
+            margin-top: 48px;
+        }
+        
+        .expertise-description {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .expertise-description p {
+            font-size: 18px;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .dark-mode .expertise-description p {
+            color: #a0aec0;
+        }
+        
+        .expertise-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+        
+        .expertise-item {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .dark-mode .expertise-item {
+            background: #1a202c;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .expertise-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-color: #3182ce;
+        }
+        
+        .expertise-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a202c;
+        }
+        
+        .dark-mode .expertise-item h3 {
+            color: #f7fafc;
+        }
+        
+        .expertise-item p {
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .dark-mode .expertise-item p {
+            color: #a0aec0;
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .credentials {
+                gap: 16px;
+            }
+            
+            .service-card {
+                padding: 24px;
+            }
+            
+            .testimonial {
+                padding: 24px;
+                margin: 32px auto 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Meghanath Macha</a>
+                <div class="desktop-nav">
+                    <a href="/#about" class="nav-link">Home</a>
+                    <a href="/#bio" class="nav-link">Bio</a>
+                    <a href="/#ai-impact" class="nav-link">AI Impact</a>
+                    <a href="/#research" class="nav-link">Research</a>
+                    <a href="/investing.html" class="nav-link active">Investing</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="header-cta">Book Call</a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="mobile-menu-title">Menu</span>
+            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close navigation menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="/#about" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="/#bio" class="mobile-nav-link">
+                <i class="fas fa-user"></i>
+                <span>Bio</span>
+            </a>
+            <a href="/#ai-impact" class="mobile-nav-link">
+                <i class="fas fa-robot"></i>
+                <span>AI Impact</span>
+            </a>
+            <a href="/#research" class="mobile-nav-link">
+                <i class="fas fa-flask"></i>
+                <span>Research</span>
+            </a>
+            <a href="/investing.html" class="mobile-nav-link active">
+                <i class="fas fa-chart-line"></i>
+                <span>Investing</span>
+            </a>
+            <a href="/#contact" class="mobile-nav-link">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+        <div class="container">
+            <h1>Technical Due Diligence for AI/ML Investments</h1>
+            <p class="hero-subtitle">Independent technical assessment and validation for VCs and PE firms investing in AI companies</p>
+            
+            <div class="credentials">
+                <div class="credential-item">
+                    <span class="credential-number">10+</span>
+                    <span class="credential-label">Years ML Experience</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-number">15+</span>
+                    <span class="credential-label">Patents Filed</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-number">Production</span>
+                    <span class="credential-label">ML Systems</span>
+                </div>
+                <div class="credential-item">
+                    <span class="credential-number">5-7</span>
+                    <span class="credential-label">Day Turnaround</span>
+                </div>
+            </div>
+            
+            <a href="#contact" class="hero-cta">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card featured">
+                    <h3 class="service-title">Technical Due Diligence</h3>
+                    <p class="service-description">Comprehensive review of ML architecture, codebase quality, infrastructure costs, and technical debt. Includes team assessment and scalability analysis.</p>
+                    <p class="service-price">Project-based • 5-7 days</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Technical Advisory</h3>
+                    <p class="service-description">Ongoing technical guidance for portfolio companies. Monthly check-ins, architecture reviews, and hiring support.</p>
+                    <p class="service-price">Monthly Retainer</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Quick Technical Screen</h3>
+                    <p class="service-description">High-level technical assessment to identify major red flags or validate core technical claims before deeper diligence.</p>
+                    <p class="service-price">Fixed Fee • 48-72 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Engagement Process</h2>
+            <div class="process-steps">
+                <div class="process-step" aria-label="Step 1: Initial briefing">
+                    <div class="step-icon" aria-hidden="true">1</div>
+                    <h3 class="step-title">Initial Call</h3>
+                    <p class="step-description">Understand investment context and key technical concerns</p>
+                </div>
+                
+                <div class="process-step" aria-label="Step 2: Technical review">
+                    <div class="step-icon" aria-hidden="true">2</div>
+                    <h3 class="step-title">Technical Review</h3>
+                    <p class="step-description">Code review, architecture assessment, and team interviews</p>
+                </div>
+                
+                <div class="process-step" aria-label="Step 3: Analysis and report">
+                    <div class="step-icon" aria-hidden="true">3</div>
+                    <h3 class="step-title">Analysis</h3>
+                    <p class="step-description">Risk assessment, competitive benchmarking, and scalability projections</p>
+                </div>
+                
+                <div class="process-step" aria-label="Step 4: Deliverable and discussion">
+                    <div class="step-icon" aria-hidden="true">4</div>
+                    <h3 class="step-title">Deliverable</h3>
+                    <p class="step-description">Detailed report with findings, risks, and recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise-section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="expertise-content">
+                <div class="expertise-description">
+                    <p>Deep experience building and scaling ML systems in production, from recommendation engines processing billions of events to computer vision systems deployed at scale.</p>
+                </div>
+                
+                <div class="expertise-areas">
+                    <div class="expertise-item">
+                        <h3>ML Infrastructure</h3>
+                        <p>Production ML pipelines, model serving, A/B testing frameworks, and cost optimization for large-scale deployments.</p>
+                    </div>
+                    
+                    <div class="expertise-item">
+                        <h3>System Architecture</h3>
+                        <p>Distributed systems, real-time processing, data pipelines, and infrastructure scalability assessment.</p>
+                    </div>
+                    
+                    <div class="expertise-item">
+                        <h3>Technical Risk Assessment</h3>
+                        <p>Code quality, technical debt, team capabilities, competitive moats, and build vs. buy decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Let's Discuss Your Due Diligence Needs</h2>
+            <p class="cta-subtitle">Schedule a confidential consultation to explore how I can support your investment decisions</p>
+            
+            <a href="https://calendly.com/meghanath-macha" class="cta-button" target="_blank">Schedule 30-Min Call</a>
+            
+            <div class="contact-info">
+                <a href="mailto:meghanath.macha@gmail.com">meghanath.macha@gmail.com</a>
+                <a href="https://linkedin.com/in/meghanathmacha" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Meghanath Macha. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:meghanath.macha@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        function updateDarkModeIcon() {
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+            updateDarkModeIcon();
+        });
+        
+        // Initialize dark mode
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+        updateDarkModeIcon();
+        
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('show');
+            mobileMenuOverlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('show');
+            mobileMenuOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', openMobileMenu);
+        }
+        
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+        }
+        
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+        
+        // Smooth scrolling for anchor links (exclude external URLs)
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Track clicks
+        function trackClick(element, action) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'CTA',
+                    'event_label': action,
+                    'value': 1
+                });
+            }
+        }
+        
+        // Add click tracking to CTAs
+        document.querySelectorAll('.hero-cta, .header-cta, .cta-button').forEach(button => {
+            button.addEventListener('click', () => trackClick(button, 'Book Call'));
+        });
+    </script>
+</body>
+</html>

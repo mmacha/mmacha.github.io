@@ -20,7 +20,7 @@ This is a personal portfolio website for Meghanath Macha built as a static Jekyl
   - Modernizr for feature detection
 - **Data Visualization**: pyLDAvis for interactive topic modeling visualization
 - **Analytics**: Google Analytics integration
-- **Features**: Dark mode toggle with localStorage persistence
+- **Features**: 3-button theme toggle (System/Light/Dark) with localStorage persistence
 
 ## File Structure
 
@@ -61,7 +61,7 @@ The site is automatically deployed via GitHub Pages when changes are pushed to t
 ## Key Features
 
 1. **Responsive Design**: Mobile-friendly layout with media queries
-2. **Dark Mode**: Toggle with localStorage persistence to prevent flash
+2. **Theme Toggle**: 3-button toggle (System/Light/Dark) that respects OS preference, with localStorage persistence
 3. **Interactive Visualizations**: pyLDAvis integration for topic modeling results
 4. **Technical Diligence Services**: Dedicated investing page with Calendly integration
 5. **Resource Downloads**: Direct links to research papers, resume, and investment documents
@@ -83,7 +83,8 @@ The site is automatically deployed via GitHub Pages when changes are pushed to t
 - Font stacks include Libre Baskerville and Open Sans
 - Icon fonts from Font Awesome and Fontello
 - Critical CSS inlined for performance
-- Dark mode styles applied immediately to prevent flash
+- Theme toggle supports system preference detection via prefers-color-scheme
+- Dark mode styles applied immediately in head to prevent flash
 
 ## Analytics Configuration
 

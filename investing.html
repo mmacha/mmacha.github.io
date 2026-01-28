@@ -97,9 +97,16 @@
     <!-- Dark mode script -->
     <script>
         (function() {
-            const savedMode = localStorage.getItem('darkMode');
-            if (savedMode === 'enabled') {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark-mode');
+            } else if (savedTheme === 'light') {
+                // Light mode - no class needed
+            } else {
+                // System preference (default)
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark-mode');
+                }
             }
         })();
     </script>
@@ -341,6 +348,88 @@
         .dark-mode .nav-link.active::after {
             background: linear-gradient(90deg, #60a5fa, #93c5fd);
             box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+        }
+
+        /* Theme Toggle Styles - MoltHub inspired */
+        .theme-toggle-group {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 9999px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .dark-mode .theme-toggle-group {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 9999px;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle-btn:hover {
+            color: #374151;
+        }
+
+        .theme-toggle-btn.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
+        }
+
+        .dark-mode .theme-toggle-btn {
+            color: #9ca3af;
+        }
+
+        .dark-mode .theme-toggle-btn:hover {
+            color: #e5e7eb;
+        }
+
+        .dark-mode .theme-toggle-btn.active {
+            background: #60a5fa;
+            color: white;
+            box-shadow: 0 1px 3px rgba(96, 165, 250, 0.4);
+        }
+
+        .theme-toggle-btn i {
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover i {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle-btn.active i {
+            transform: scale(1);
+        }
+
+        /* Mobile theme toggle in menu */
+        .mobile-theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+        }
+
+        .mobile-theme-label {
+            font-size: 1rem;
+            color: #374151;
+        }
+
+        .dark-mode .mobile-theme-label {
+            color: #e5e7eb;
         }
 
         /* Mobile Navigation Indicator - matching index.html */
@@ -1247,9 +1336,17 @@
                     <a href="/#research" class="hover:text-blue-600 nav-link">Research</a>
                     <a href="/investing.html" class="text-blue-600 nav-link font-semibold">Investing</a>
                     <a href="/#contact" class="hover:text-blue-600 nav-link">Contact</a>
-                    <button id="darkModeToggle" class="hover:text-blue-600">
-                        <i class="fas fa-moon"></i>
-                    </button>
+                    <div class="theme-toggle-group" role="group" aria-label="Theme toggle">
+                        <button id="themeSystem" class="theme-toggle-btn" aria-label="System theme" title="System">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button id="themeLight" class="theme-toggle-btn" aria-label="Light theme" title="Light">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <button id="themeDark" class="theme-toggle-btn" aria-label="Dark theme" title="Dark">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
                 </div>
                 <button id="mobileMenuBtn" class="md:hidden p-2">
                     <i class="fas fa-bars text-xl"></i>
@@ -1289,10 +1386,20 @@
                         <i class="fas fa-envelope mr-3 text-blue-600"></i>
                         <span>Contact</span>
                     </a>
-                    <button id="mobileDarkModeToggle" class="text-left hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-moon mr-3 text-blue-600"></i>
-                        <span>Dark Mode</span>
-                    </button>
+                    <div class="mobile-theme-toggle">
+                        <span class="mobile-theme-label">Theme:</span>
+                        <div class="theme-toggle-group" role="group" aria-label="Theme toggle">
+                            <button id="mobileThemeSystem" class="theme-toggle-btn" aria-label="System theme" title="System">
+                                <i class="fas fa-desktop"></i>
+                            </button>
+                            <button id="mobileThemeLight" class="theme-toggle-btn" aria-label="Light theme" title="Light">
+                                <i class="fas fa-sun"></i>
+                            </button>
+                            <button id="mobileThemeDark" class="theme-toggle-btn" aria-label="Dark theme" title="Dark">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-8 pt-4 border-t border-gray-200">
                     <p class="text-sm text-gray-500 text-center">Tap anywhere outside to close menu</p>
@@ -1493,63 +1600,108 @@
     </button>
 
     <script>
-        // Dark mode functionality
-        const desktopDarkModeToggle = document.getElementById('darkModeToggle');
-        const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
+        // Theme toggle functionality with system/light/dark options
         const floatingDarkToggle = document.getElementById('floatingDarkToggle');
         const floatingScrollTop = document.getElementById('floatingScrollTop');
         const body = document.body;
-        
-        function updateDarkModeIcons() {
-            const isDark = document.documentElement.classList.contains('dark-mode');
-            
-            // Update desktop toggle icon
-            if (desktopDarkModeToggle) {
-                const icon = desktopDarkModeToggle.querySelector('i');
-                if (icon) {
-                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                }
+
+        // Theme toggle buttons
+        const themeButtons = {
+            system: document.getElementById('themeSystem'),
+            light: document.getElementById('themeLight'),
+            dark: document.getElementById('themeDark'),
+            mobileSystem: document.getElementById('mobileThemeSystem'),
+            mobileLight: document.getElementById('mobileThemeLight'),
+            mobileDark: document.getElementById('mobileThemeDark')
+        };
+
+        // Get system preference
+        const getSystemPreference = () => {
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+
+        // Apply theme based on preference
+        const applyTheme = (theme) => {
+            const effectiveTheme = theme === 'system' ? getSystemPreference() : theme;
+
+            if (effectiveTheme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
             }
-            
-            // Update mobile toggle icon and text - matching index.html
-            if (mobileDarkModeToggle) {
-                mobileDarkModeToggle.innerHTML = isDark ? 
-                    '<i class="fas fa-sun mr-3 text-blue-600"></i><span>Light Mode</span>' : 
-                    '<i class="fas fa-moon mr-3 text-blue-600"></i><span>Dark Mode</span>';
-            }
-            
+
             // Update floating toggle icon
             if (floatingDarkToggle) {
                 const icon = floatingDarkToggle.querySelector('i');
                 if (icon) {
-                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                    icon.className = effectiveTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
                 }
             }
-        }
-        
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark-mode');
-            const isDark = document.documentElement.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-            updateDarkModeIcons();
-        }
-        
-        // Desktop dark mode toggle
-        if (desktopDarkModeToggle) {
-            desktopDarkModeToggle.addEventListener('click', toggleDarkMode);
-        }
-        
-        // Floating dark mode toggle
+        };
+
+        // Update toggle button states
+        const updateToggleStates = (theme) => {
+            // Remove active class from all buttons
+            Object.values(themeButtons).forEach(btn => {
+                if (btn) btn.classList.remove('active');
+            });
+
+            // Add active class to current theme buttons
+            if (theme === 'system') {
+                if (themeButtons.system) themeButtons.system.classList.add('active');
+                if (themeButtons.mobileSystem) themeButtons.mobileSystem.classList.add('active');
+            } else if (theme === 'light') {
+                if (themeButtons.light) themeButtons.light.classList.add('active');
+                if (themeButtons.mobileLight) themeButtons.mobileLight.classList.add('active');
+            } else if (theme === 'dark') {
+                if (themeButtons.dark) themeButtons.dark.classList.add('active');
+                if (themeButtons.mobileDark) themeButtons.mobileDark.classList.add('active');
+            }
+        };
+
+        // Set theme function
+        window.setTheme = (theme) => {
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+            updateToggleStates(theme);
+        };
+
+        // Initialize theme from saved preference or system
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        applyTheme(savedTheme);
+        updateToggleStates(savedTheme);
+
+        // Add event listeners for theme buttons
+        if (themeButtons.system) themeButtons.system.addEventListener('click', () => window.setTheme('system'));
+        if (themeButtons.light) themeButtons.light.addEventListener('click', () => window.setTheme('light'));
+        if (themeButtons.dark) themeButtons.dark.addEventListener('click', () => window.setTheme('dark'));
+        if (themeButtons.mobileSystem) themeButtons.mobileSystem.addEventListener('click', () => { window.setTheme('system'); closeMobileMenu(); });
+        if (themeButtons.mobileLight) themeButtons.mobileLight.addEventListener('click', () => { window.setTheme('light'); closeMobileMenu(); });
+        if (themeButtons.mobileDark) themeButtons.mobileDark.addEventListener('click', () => { window.setTheme('dark'); closeMobileMenu(); });
+
+        // Floating dark mode toggle (legacy support)
         if (floatingDarkToggle) {
-            floatingDarkToggle.addEventListener('click', toggleDarkMode);
+            floatingDarkToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                window.setTheme(isDark ? 'light' : 'dark');
+            });
         }
-        
-        // Initialize dark mode
-        const savedMode = localStorage.getItem('darkMode');
-        if (savedMode === 'enabled') {
-            document.documentElement.classList.add('dark-mode');
+
+        // Listen for system preference changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const currentTheme = localStorage.getItem('theme') || 'system';
+                if (currentTheme === 'system') {
+                    applyTheme('system');
+                }
+            });
         }
-        updateDarkModeIcons();
+
+        // Legacy support
+        function toggleDarkMode() {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            window.setTheme(isDark ? 'light' : 'dark');
+        }
         
         // Floating toggles scroll functionality
         let floatingToggleTimeout;
@@ -1660,12 +1812,7 @@
             button.addEventListener('click', () => trackClick(button, 'Book Call'));
         });
         
-        // Mobile dark mode toggle  
-        if (mobileDarkModeToggle) {
-            mobileDarkModeToggle.addEventListener('click', () => {
-                toggleDarkMode();
-                closeMobileMenu();
-            });
+        // Mobile theme toggle close menu handled in theme button listeners above
         }
         
         // Enhanced mobile menu functionality - matching index.html

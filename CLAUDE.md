@@ -80,7 +80,7 @@ The site is automatically deployed via GitHub Pages when changes are pushed to t
 ## Styling Notes
 
 - Uses CSS custom properties for theming
-- Font stacks include Libre Baskerville and Open Sans
+- Primary font: Plus Jakarta Sans (Google Fonts) - modern geometric typeface
 - Icon fonts from Font Awesome and Fontello
 - Critical CSS inlined for performance
 - Theme toggle supports system preference detection via prefers-color-scheme

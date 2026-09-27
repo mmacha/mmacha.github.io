@@ -3434,66 +3434,7 @@
                 </button>
             </div>
             
-            <!-- Mobile Menu Overlay -->
-            <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="mobile-menu mt-4 pb-4">
-                <button id="mobileMenuClose" class="mobile-menu-close">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-                <div class="flex flex-col space-y-4">
-                    <a href="#about" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-home mr-3 text-blue-600"></i>
-                        <span>Home</span>
-                    </a>
-                    <a href="#bio" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-user mr-3 text-blue-600"></i>
-                        <span>Bio</span>
-                    </a>
-
-                    <a href="#ai-impact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-robot mr-3 text-blue-600"></i>
-                        <span>AI Impact</span>
-                    </a>
-                    <a href="#vision" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-chart-line mr-3 text-blue-600"></i>
-                        <span>Leadership</span>
-                    </a>
-                    <!-- <a href="#advisory" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-users mr-3 text-blue-600"></i>
-                        <span>Advisory</span>
-                    </a> -->
-                    <a href="#research" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-flask mr-3 text-blue-600"></i>
-                        <span>Research</span>
-                    </a>
-                    <!-- <a href="investing.html" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-chart-line mr-3 text-blue-600"></i>
-                        <span>Investing</span>
-                    </a> -->
-                    <a href="#contact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
-                        <i class="fas fa-envelope mr-3 text-blue-600"></i>
-                        <span>Contact</span>
-                    </a>
-                    <div class="mobile-theme-toggle">
-                        <div class="theme-toggle-group" role="group" aria-label="Theme toggle">
-                            <button id="mobileThemeSystem" class="theme-toggle-btn" aria-label="System theme" title="System">
-                                <i class="fas fa-desktop"></i>
-                            </button>
-                            <button id="mobileThemeLight" class="theme-toggle-btn" aria-label="Light theme" title="Light">
-                                <i class="fas fa-sun"></i>
-                            </button>
-                            <button id="mobileThemeDark" class="theme-toggle-btn" aria-label="Dark theme" title="Dark">
-                                <i class="fas fa-moon"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-8 pt-4 border-t border-gray-200">
-                    <p class="text-sm text-gray-500 text-center">Tap anywhere outside to close menu</p>
-                </div>
-            </div>
+            <!-- Mobile menu and overlay are rendered by script only while the menu is open -->
         </div>
     </nav>
 
@@ -3901,11 +3842,15 @@
         const themeButtons = {
             system: document.getElementById('themeSystem'),
             light: document.getElementById('themeLight'),
-            dark: document.getElementById('themeDark'),
-            mobileSystem: document.getElementById('mobileThemeSystem'),
-            mobileLight: document.getElementById('mobileThemeLight'),
-            mobileDark: document.getElementById('mobileThemeDark')
+            dark: document.getElementById('themeDark')
         };
+
+        // Mobile theme buttons exist only while the mobile menu is rendered, so look them up live
+        const getMobileThemeButtons = () => ({
+            system: document.getElementById('mobileThemeSystem'),
+            light: document.getElementById('mobileThemeLight'),
+            dark: document.getElementById('mobileThemeDark')
+        });
 
         // Get system preference
         const getSystemPreference = () => {
@@ -3925,21 +3870,23 @@
 
         // Update toggle button states
         const updateToggleStates = (theme) => {
+            const mobileTheme = getMobileThemeButtons();
+
             // Remove active class from all buttons
-            Object.values(themeButtons).forEach(btn => {
+            Object.values(themeButtons).concat(Object.values(mobileTheme)).forEach(btn => {
                 if (btn) btn.classList.remove('active');
             });
 
             // Add active class to current theme buttons
             if (theme === 'system') {
                 if (themeButtons.system) themeButtons.system.classList.add('active');
-                if (themeButtons.mobileSystem) themeButtons.mobileSystem.classList.add('active');
+                if (mobileTheme.system) mobileTheme.system.classList.add('active');
             } else if (theme === 'light') {
                 if (themeButtons.light) themeButtons.light.classList.add('active');
-                if (themeButtons.mobileLight) themeButtons.mobileLight.classList.add('active');
+                if (mobileTheme.light) mobileTheme.light.classList.add('active');
             } else if (theme === 'dark') {
                 if (themeButtons.dark) themeButtons.dark.classList.add('active');
-                if (themeButtons.mobileDark) themeButtons.mobileDark.classList.add('active');
+                if (mobileTheme.dark) mobileTheme.dark.classList.add('active');
             }
         };
 
@@ -3977,9 +3924,15 @@
         if (themeButtons.system) themeButtons.system.addEventListener('click', () => window.setTheme('system'));
         if (themeButtons.light) themeButtons.light.addEventListener('click', () => window.setTheme('light'));
         if (themeButtons.dark) themeButtons.dark.addEventListener('click', () => window.setTheme('dark'));
-        if (themeButtons.mobileSystem) themeButtons.mobileSystem.addEventListener('click', () => window.setTheme('system'));
-        if (themeButtons.mobileLight) themeButtons.mobileLight.addEventListener('click', () => window.setTheme('light'));
-        if (themeButtons.mobileDark) themeButtons.mobileDark.addEventListener('click', () => window.setTheme('dark'));
+
+        // Called each time the mobile menu is rendered, since its buttons are created on open
+        window.wireMobileThemeButtons = () => {
+            const mobileTheme = getMobileThemeButtons();
+            if (mobileTheme.system) mobileTheme.system.addEventListener('click', () => window.setTheme('system'));
+            if (mobileTheme.light) mobileTheme.light.addEventListener('click', () => window.setTheme('light'));
+            if (mobileTheme.dark) mobileTheme.dark.addEventListener('click', () => window.setTheme('dark'));
+            updateToggleStates(localStorage.getItem('theme') || 'system');
+        };
 
         // Listen for system preference changes
         if (window.matchMedia) {
@@ -3998,61 +3951,146 @@
             window.setTheme(isDark ? 'light' : 'dark');
         };
 
-        // Mobile menu toggle
+        // Mobile menu: markup is rendered only while the menu is open
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        
-        if (mobileMenuToggle && mobileMenu) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isOpen = mobileMenu.classList.contains('show');
-                
-                if (isOpen) {
-                    mobileMenu.classList.remove('show');
-                    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
-                } else {
-                    mobileMenu.classList.add('show');
-                    if (mobileMenuOverlay) mobileMenuOverlay.classList.add('show');
-                }
-                
-                // Update hamburger icon
-                const icon = this.querySelector('i');
-                if (icon) {
-                    icon.className = isOpen ? 'fas fa-bars text-xl' : 'fas fa-times text-xl';
-                }
-            });
 
-            // Close mobile menu when clicking overlay or close button
-            if (mobileMenuOverlay) {
-                mobileMenuOverlay.addEventListener('click', function() {
-                    mobileMenu.classList.remove('show');
-                    mobileMenuOverlay.classList.remove('show');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    if (icon) icon.className = 'fas fa-bars text-xl';
-                });
-            }
+        const MOBILE_MENU_MARKUP = `
+            <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
             
-            if (mobileMenuClose) {
-                mobileMenuClose.addEventListener('click', function() {
-                    mobileMenu.classList.remove('show');
-                    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    if (icon) icon.className = 'fas fa-bars text-xl';
-                });
-            }
+            <div id="mobileMenu" class="mobile-menu mt-4 pb-4">
+                <button id="mobileMenuClose" class="mobile-menu-close">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-home mr-3 text-blue-600"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#bio" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-user mr-3 text-blue-600"></i>
+                        <span>Bio</span>
+                    </a>
 
-            // Close mobile menu when clicking on links
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('show');
-                    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
-                    const icon = mobileMenuToggle.querySelector('i');
-                    if (icon) {
-                        icon.className = 'fas fa-bars text-xl';
-                    }
+                    <a href="#ai-impact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-robot mr-3 text-blue-600"></i>
+                        <span>AI Impact</span>
+                    </a>
+                    <a href="#vision" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-chart-line mr-3 text-blue-600"></i>
+                        <span>Leadership</span>
+                    </a>
+                    <!-- <a href="#advisory" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-users mr-3 text-blue-600"></i>
+                        <span>Advisory</span>
+                    </a> -->
+                    <a href="#research" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-flask mr-3 text-blue-600"></i>
+                        <span>Research</span>
+                    </a>
+                    <!-- <a href="investing.html" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-chart-line mr-3 text-blue-600"></i>
+                        <span>Investing</span>
+                    </a> -->
+                    <a href="#contact" class="hover:text-blue-600 mobile-nav-link py-4 px-3 flex items-center text-lg">
+                        <i class="fas fa-envelope mr-3 text-blue-600"></i>
+                        <span>Contact</span>
+                    </a>
+                    <div class="mobile-theme-toggle">
+                        <div class="theme-toggle-group" role="group" aria-label="Theme toggle">
+                            <button id="mobileThemeSystem" class="theme-toggle-btn" aria-label="System theme" title="System">
+                                <i class="fas fa-desktop"></i>
+                            </button>
+                            <button id="mobileThemeLight" class="theme-toggle-btn" aria-label="Light theme" title="Light">
+                                <i class="fas fa-sun"></i>
+                            </button>
+                            <button id="mobileThemeDark" class="theme-toggle-btn" aria-label="Dark theme" title="Dark">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                    <p class="text-sm text-gray-500 text-center">Tap anywhere outside to close menu</p>
+                </div>
+            </div>
+`;
+
+        if (mobileMenuToggle) {
+            const mobileMenuMount = mobileMenuToggle.parentElement.parentElement;
+            let mobileMenu = null;
+            let mobileMenuOverlay = null;
+            let mobileMenuRemoveTimer = null;
+
+            const setMobileToggleState = (isOpen) => {
+                const icon = mobileMenuToggle.querySelector('i');
+                if (icon) icon.className = isOpen ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+                mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            };
+
+            const removeMobileMenu = () => {
+                if (mobileMenu) { mobileMenu.remove(); mobileMenu = null; }
+                if (mobileMenuOverlay) { mobileMenuOverlay.remove(); mobileMenuOverlay = null; }
+            };
+
+            const closeMobileMenu = () => {
+                if (!mobileMenu) return;
+                mobileMenu.classList.remove('show');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('show');
+                setMobileToggleState(false);
+                clearTimeout(mobileMenuRemoveTimer);
+                // Wait for the slide-out transition before removing the markup
+                mobileMenuRemoveTimer = setTimeout(removeMobileMenu, 300);
+            };
+
+            const openMobileMenu = () => {
+                clearTimeout(mobileMenuRemoveTimer);
+                removeMobileMenu();
+
+                const holder = document.createElement('div');
+                holder.innerHTML = MOBILE_MENU_MARKUP;
+                mobileMenuOverlay = holder.querySelector('#mobileMenuOverlay');
+                mobileMenu = holder.querySelector('#mobileMenu');
+                if (!mobileMenu || !mobileMenuOverlay) return;
+
+                mobileMenuMount.appendChild(mobileMenuOverlay);
+                mobileMenuMount.appendChild(mobileMenu);
+                mobileMenu.setAttribute('aria-hidden', 'false');
+
+                // Set animation order for mobile nav links
+                mobileMenu.querySelectorAll('.mobile-nav-link').forEach((link, index) => {
+                    link.style.setProperty('--order', index + 1);
                 });
+
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+                const mobileMenuClose = mobileMenu.querySelector('#mobileMenuClose');
+                if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+                // Close mobile menu when clicking on links
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+
+                // The theme buttons were just created, so bind them and reflect the current theme
+                if (window.wireMobileThemeButtons) window.wireMobileThemeButtons();
+
+                // Force a reflow so the slide-in transition plays from the closed position
+                void mobileMenu.offsetWidth;
+
+                mobileMenu.classList.add('show');
+                mobileMenuOverlay.classList.add('show');
+                setMobileToggleState(true);
+            };
+
+            setMobileToggleState(false);
+
+            mobileMenuToggle.addEventListener('click', function() {
+                if (mobileMenu && mobileMenu.classList.contains('show')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
             });
         }
 

@@ -1,0 +1,32 @@
+# Meghanath Macha
+
+Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platforms.
+
+- Website: https://mmacha.github.io/
+- LinkedIn: https://www.linkedin.com/in/meghanathmacha/
+- Google Scholar: https://scholar.google.com/citations?user=XNzyEd0AAAAJ&hl=en
+- Email: meghanath.macha@gmail.com
+
+## Now
+
+Architects ZeroToOne's Large Behavioral Model, the platform unifying physical and digital
+behavioral traces across 1.8B+ devices and generating 10B+ daily predictions for Fortune 500
+marketing intelligence. Led technical diligence on ZeroToOne's acquisition of GroundTruth and
+WeatherBug; leads the platform integration.
+
+## Previously
+
+At Adobe, led GenStudio's guideline-aware AI systems, delivering semantic knowledge graph
+grounding that enabled Adobe's first fully AI-generated marketing campaign and a 60% content
+velocity improvement. Earlier, founding ML engineer at ZeroToOne.AI and research scientist at
+Adobe Research India.
+
+## Research
+
+Carnegie Mellon PhD in privacy-preserving behavioral modeling. Published in ISR, DMKD, KDD and
+Management Science with 300+ citations. M.Sc. and B.Sc. in Mathematics and Computing from the
+Indian Institute of Technology Kharagpur.
+
+## Patents
+
+9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy.

@@ -23,7 +23,7 @@ Adobe Research India.
 
 ## Research
 
-Carnegie Mellon PhD in privacy-preserving behavioral modeling. Published in ISR, DMKD, KDD and
+Carnegie Mellon Ph.D. in privacy-preserving behavioral modeling. Published in ISR, DMKD, KDD and
 Management Science with 300+ citations. M.Sc. and B.Sc. in Mathematics and Computing from the
 Indian Institute of Technology Kharagpur.
 

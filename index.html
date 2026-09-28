@@ -93,32 +93,6 @@
         }
         
         /* Enhanced loading screen with MM logo */
-        .page-transition-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0f172a; /* Dark background */
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.6s ease-out;
-            opacity: 1;
-        }
-        
-        .dark-mode-init .page-transition-overlay,
-        .dark-mode .page-transition-overlay {
-            background-color: #0f172a;
-        }
-        
-        .page-transition-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
         .mm-logo-container {
             position: relative;
             width: 120px;
@@ -151,31 +125,6 @@
             animation: mmLogoRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.6s forwards;
         }
         
-        .loading-bar {
-            position: absolute;
-            bottom: 35%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 160px;
-            height: 3px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeIn 0.3s ease 0.8s forwards;
-        }
-        
-        .loading-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            animation: loading 1.4s cubic-bezier(0.65, 0.05, 0.36, 1) 0.9s forwards;
-        }
-        
         @keyframes mmLogoReveal {
             0% { transform: scale(0); opacity: 0; }
             70% { transform: scale(1.1); opacity: 1; }
@@ -186,16 +135,6 @@
             0% { transform: scale(0.9); opacity: 0; border-color: rgba(255, 255, 255, 0); }
             50% { opacity: 1; border-color: rgba(255, 255, 255, 0.8); }
             100% { transform: scale(1.5); opacity: 0; border-color: rgba(255, 255, 255, 0); }
-        }
-        
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
         }
     </style>
     
@@ -351,16 +290,8 @@
         }
         
         /* Gradient sections with better color harmony */
-        .dark-mode .advisory-gradient {
-            background: linear-gradient(135deg, #1e293b 0%, #1a202c 100%);
-        }
-        
         .dark-mode .contact-gradient {
             background: linear-gradient(135deg, #171923 0%, #1e293b 100%);
-        }
-        
-        .dark-mode #vision {
-            background: linear-gradient(135deg, #1a202c 0%, #171923 100%);
         }
         
         .dark-mode #research {
@@ -952,46 +883,6 @@
             background-color: rgba(66, 153, 225, 0.25);
         }
         
-        /* Alternative highlight styles - emoji markers */
-        .highlight-emoji {
-            color: #2a6abf;
-            font-weight: 600;
-            position: relative;
-            padding: 0 2px;
-            transition: all 0.25s ease-in;
-        }
-        .highlight-emoji::before,
-        .highlight-emoji::after {
-            opacity: 0;
-            transition: opacity 0.25s ease-in, transform 0.25s ease-in;
-            position: absolute;
-            font-size: 0.75em;
-        }
-        .highlight-emoji::before {
-            content: '✨';
-            left: -1em;
-            transform: translateX(5px);
-        }
-        .highlight-emoji::after {
-            content: '✨';
-            right: -1em;
-            transform: translateX(-5px);
-        }
-        .highlight-emoji:hover::before,
-        .highlight-emoji:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .dark-mode .highlight-emoji {
-            color: #90cdf4;
-        }
-        .highlight-emoji:hover {
-            color: #1e5aa8;
-        }
-        .dark-mode .highlight-emoji:hover {
-            color: #a4c5f4;
-        }
-        
         .profile-image-hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -1169,46 +1060,6 @@
             background-color: rgba(66, 153, 225, 0.25);
         }
         
-        /* Emoji marker style */
-        .highlight-emoji {
-            color: #2a6abf;
-            font-weight: 600;
-            position: relative;
-            padding: 0 2px;
-            transition: all 0.25s ease-in;
-        }
-        .highlight-emoji::before,
-        .highlight-emoji::after {
-            opacity: 0;
-            transition: opacity 0.25s ease-in, transform 0.25s ease-in;
-            position: absolute;
-            font-size: 0.75em;
-        }
-        .highlight-emoji::before {
-            content: '✨';
-            left: -1em;
-            transform: translateX(5px);
-        }
-        .highlight-emoji::after {
-            content: '✨';
-            right: -1em;
-            transform: translateX(-5px);
-        }
-        .highlight-emoji:hover::before,
-        .highlight-emoji:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .dark-mode .highlight-emoji {
-            color: #90cdf4;
-        }
-        .highlight-emoji:hover {
-            color: #1e5aa8;
-        }
-        .dark-mode .highlight-emoji:hover {
-            color: #a4c5f4;
-        }
-        
         /* Card & panel improvements for dark mode */
         .dark-mode .bg-white p {
             color: #e2e8f0;
@@ -1307,22 +1158,6 @@
                 background-image: linear-gradient(120deg, rgba(49, 130, 206, 0.2) 0%, rgba(49, 130, 206, 0.3) 100%);
             }
             
-            /* Leadership Vision and other specialized sections styling */
-            .vision-card {
-                border-radius: 8px;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-                background: linear-gradient(#ffffff, #ffffff) padding-box,
-                            linear-gradient(135deg, #3182ce, #63b3ed) border-box;
-                border: 2px solid transparent;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            
-        .dark-mode .vision-card {
-            background: linear-gradient(#1e293b, #1e293b) padding-box,
-                        linear-gradient(135deg, #4299e1, #63b3ed) border-box;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
             /* Animation and card hover effects */
             @keyframes fadeInUp {
                 from {
@@ -1523,140 +1358,6 @@
                 background-color: rgba(99, 179, 237, 0.15);
             }
             
-            /* Advisory section dark mode enhancements */
-            .dark-mode .advisory-gradient {
-                background: linear-gradient(135deg, #1a202c, #2d3748);
-            }
-            
-            .dark-mode .advisory-card {
-                background-color: #1e293b;
-                border: 1px solid rgba(99, 179, 237, 0.2);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            }
-            
-            .dark-mode .advisory-icon {
-                background: linear-gradient(135deg, #3182ce, #63b3ed);
-                color: white;
-                box-shadow: 0 0 20px rgba(49, 130, 206, 0.4);
-                transition: all 0.3s ease;
-            }
-            
-            .dark-mode .advisory-card:hover .advisory-icon {
-                transform: scale(1.05) rotate(5deg);
-                box-shadow: 0 0 25px rgba(49, 130, 206, 0.6);
-            }
-            
-            .dark-mode .advisory-card h3,
-            .dark-mode .advisory-card h4 {
-                color: #f7fafc;
-            }
-            
-            .dark-mode .advisory-card p {
-                color: #e2e8f0;
-            }
-            
-            .dark-mode #advisory .bg-gray-50 {
-                background-color: #263549;
-                border: 1px solid rgba(99, 179, 237, 0.2);
-            }
-            
-            .dark-mode #advisory .impact-card {
-                border-left: 3px solid #4299e1;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .dark-mode #advisory .impact-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 3px;
-                height: 100%;
-                background: linear-gradient(to bottom, #4299e1, #63b3ed);
-                z-index: 1;
-                animation: pulseBorder 2s infinite;
-            }
-            
-            @keyframes pulseBorder {
-                0% { opacity: 0.7; }
-                50% { opacity: 1; }
-                100% { opacity: 0.7; }
-            }
-            
-            .dark-mode #advisory .impact-card:hover {
-                background-color: #1e293b;
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-                transition: all 0.3s ease;
-            }
-            
-            .dark-mode #advisory .impact-card h4 {
-                color: #90cdf4;
-                font-weight: 600;
-            position: relative;
-            display: inline-block;
-                margin-bottom: 0.75rem;
-            }
-            
-            .dark-mode #advisory .impact-card p {
-                color: #e2e8f0;
-                line-height: 1.6;
-            }
-            
-            .dark-mode #advisory .section-heading {
-                color: #f7fafc !important;
-                position: relative;
-                display: inline-block;
-            }
-            
-            .dark-mode #advisory .section-heading::after {
-            content: '';
-            position: absolute;
-                bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-                background: linear-gradient(90deg, #4299e1, #63b3ed);
-            border-radius: 3px;
-        }
-        
-            /* CTA button enhancements for dark mode */
-            .dark-mode #advisory .button-glow {
-                background: linear-gradient(135deg, #3182ce, #4299e1);
-                box-shadow: 0 0 15px rgba(66, 153, 225, 0.4);
-                border: none;
-            position: relative;
-            overflow: hidden;
-                transition: all 0.3s ease;
-                font-weight: 600;
-            }
-            
-            .dark-mode #advisory .button-glow:hover {
-                background: linear-gradient(135deg, #4299e1, #3182ce);
-                transform: translateY(-3px);
-                box-shadow: 0 0 20px rgba(66, 153, 225, 0.6);
-            }
-            
-            .dark-mode #advisory .button-glow::before {
-            content: '';
-            position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-                transform: rotate(45deg);
-                animation: buttonGlow 3s linear infinite;
-                z-index: -1;
-            }
-            
-            @keyframes buttonGlow {
-                0% { transform: translateX(-100%) rotate(45deg); }
-                100% { transform: translateX(100%) rotate(45deg); }
-            }
-            
             /* Contact Section Dark Mode Enhancements */
             .dark-mode #contact {
                 background: linear-gradient(135deg, #1a202c, #2d3748);
@@ -1738,139 +1439,6 @@
             
             .dark-mode #contact .contact-icon-container {
                 animation: subtle-pulse 3s infinite;
-            }
-            
-            /* Enhanced AI Leadership Vision dark mode styles */
-            .dark-mode #vision {
-                background: linear-gradient(135deg, #111827, #1e293b);
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .dark-mode #vision::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.2), transparent 60%);
-                z-index: 0;
-            }
-            
-            .dark-mode #vision .section-heading {
-                color: #f7fafc;
-                position: relative;
-                display: inline-block;
-            }
-            
-            .dark-mode #vision .section-heading::after {
-                content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 80px;
-                height: 3px;
-                background: linear-gradient(90deg, #4299e1, #63b3ed);
-                border-radius: 3px;
-                transition: width 0.3s ease;
-            }
-            
-            .dark-mode #vision .vision-card {
-                background: linear-gradient(#1a202c, #1e293b) padding-box,
-                            linear-gradient(135deg, #4299e1, #63b3ed) border-box;
-                box-shadow: 0 5px 25px rgba(49, 130, 206, 0.15);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-            .dark-mode #vision .vision-card::before {
-            content: '';
-            position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle at center, rgba(66, 153, 225, 0.03), transparent 70%);
-                opacity: 0;
-                transform: scale(0.5);
-                transition: transform 0.5s ease, opacity 0.5s ease;
-            }
-            
-            .dark-mode #vision .vision-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(49, 130, 206, 0.25);
-            }
-            
-            .dark-mode #vision .vision-card:hover::before {
-                opacity: 1;
-                transform: scale(1);
-            }
-            
-            .dark-mode #vision h3 {
-                color: #90cdf4;
-                font-weight: 700;
-            }
-            
-            .dark-mode #vision p {
-                color: #e2e8f0;
-                line-height: 1.7;
-            }
-            
-            .dark-mode #vision .vision-focus-area {
-                background-color: rgba(26, 32, 44, 0.6);
-                border-color: #4299e1;
-                border-width: 2px 0 0 0;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-                position: relative;
-            overflow: hidden;
-        }
-        
-            .dark-mode #vision .vision-focus-area:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 6px 15px rgba(49, 130, 206, 0.15);
-                background-color: rgba(26, 32, 44, 0.8);
-            }
-            
-            .dark-mode #vision .vision-focus-area h4 {
-                color: #90cdf4;
-            position: relative;
-                padding-bottom: 8px;
-        }
-        
-            .dark-mode #vision .vision-focus-area h4::after {
-            content: '';
-            position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 40px;
-                height: 2px;
-                background: linear-gradient(90deg, #4299e1, transparent);
-                transition: width 0.3s ease;
-            }
-            
-            .dark-mode #vision .vision-focus-area:hover h4::after {
-                width: 60px;
-            }
-            
-            @keyframes shimmer {
-                0% { transform: translateX(-100%); }
-                100% { transform: translateX(100%); }
-            }
-            
-            .dark-mode #vision .vision-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-                left: 0;
-                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-                transform: translateX(-100%);
-                animation: shimmer 5s infinite;
             }
             
             /* Improved dark mode for cards in the AI Impact section */
@@ -3117,9 +2685,7 @@
         /* Ensure all tab content headings have consistent styling */
         #publications-tab .section-heading,
         #patents-tab .section-heading,
-        #ai-impact .section-heading,
-        #vision .section-heading,
-        #advisory .section-heading {
+        #ai-impact .section-heading {
             max-width: 100%;
             width: 100%; /* Full width for consistent centering */
             margin-left: auto;
@@ -3332,11 +2898,11 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": "https://mmacha.github.io/",
-      "name": "Meghanath Macha | Head of AI | Behavioral ML | Scalable AI Platforms",
+      "name": "Meghanath Macha | Behavioral Foundation Models & ML Platforms",
       "author": {
         "@id": "https://mmacha.github.io/#person"
       },
-      "description": "Personal and professional website of Meghanath Macha, Head of AI, showcasing expertise in Behavioral ML, Scalable AI Platforms, and Generative AI.",
+      "description": "Personal site of Meghanath Macha, Head of AI & Platform at ZeroToOne.AI: behavioral foundation models, ML platforms, and generative AI.",
       "publisher": {
          "@id": "https://mmacha.github.io/#person"
       }
@@ -3348,16 +2914,15 @@
     ========================================================
     STRUCTURE OVERVIEW:
     
-    1. Page Transition Overlay (initial load animation)
+    1. Progress Navigation (side dots)
     2. Navigation (desktop + mobile menu)
     3. Hero Section (#about)
-    4. Bio Section
-    5. Research and Patents Section
-    6. AI Impact Section
-    7. Vision and Leadership Section
-    8. Advisory Section
-    9. Contact Section
-    10. Scripts (navigation, dark mode, mobile optimizations)
+    4. Bio Section (#bio)
+    5. AI Impact Section (#ai-impact)
+    6. Research and Patents Section (#research)
+    7. Contact Section (#contact)
+    8. Footer
+    9. Scripts (navigation, dark mode, mobile optimizations)
     
     RESPONSIVE STRATEGY:
     - Mobile: max-width: 768px
@@ -3375,14 +2940,6 @@
     </div>
     
     <!-- Page Transition Overlay -->
-    <div class="page-transition-overlay">
-        <div class="mm-logo-container">
-            <div class="mm-logo">MM</div>
-            <div class="mm-logo-ring"></div>
-        </div>
-        <!-- <div class="loading-bar"></div> -->
-    </div>
-    
     <!-- Side Progress Navigation -->
     <nav class="progress-nav" id="progressNav">
         <div class="progress-dot" data-section="about">
@@ -3505,10 +3062,6 @@
                 
                 <p class="mb-4 animate-fade-in" style="animation-delay: 0.5s;">
                     Carnegie Mellon Ph.D. in privacy-preserving behavioral modeling. Published in ISR, DMKD, KDD, Management Science with <span class="highlight-subtle">300+ citations</span>. Research deployed in ZeroToOne's production systems.
-                </p>
-                
-                <p class="mb-4 animate-fade-in" style="animation-delay: 0.6s;">
-                    At ZeroToOne, architected the LBM platform from research to Fortune 500 production. At Adobe, delivered GenStudio's core AI capabilities.
                 </p>
                     <p class="text-lg mt-6 animate-fade-in text-center italic text-gray-600" style="animation-delay: 0.8s;">
                         California. Wife. Cat named Binxy.
@@ -4030,19 +3583,6 @@
                 }
             });
         }
-
-        // Hide loading overlay after page loads
-        window.addEventListener('load', function() {
-            const overlay = document.querySelector('.page-transition-overlay');
-            if (overlay) {
-                setTimeout(() => {
-                    overlay.classList.add('fade-out');
-                    setTimeout(() => {
-                        overlay.remove();
-                    }, 600); // Wait for fade-out transition to complete
-                }, 500); // Small delay for smooth experience
-            }
-        });
         });
     </script>
 </body>

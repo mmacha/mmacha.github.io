@@ -866,7 +866,9 @@
             font-weight: 600;
             background-color: rgba(144, 205, 244, 0.15);
             border-radius: 4px;
-            padding: 0 5px;
+            padding: 0.1em 0.35em;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
             transition: all 0.25s ease-in;
         }
         .dark-mode .highlight-subtle {
@@ -886,7 +888,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .profile-image-hover:hover {
-            transform: scale(1.05);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
         }
         /* Removed mt-16 dark mode background to prevent double backgrounds */
@@ -1041,7 +1042,9 @@
             font-weight: 600;
             background-color: rgba(144, 205, 244, 0.15);
             border-radius: 4px;
-            padding: 0 5px;
+            padding: 0.1em 0.35em;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
             transition: all 0.25s ease-in;
         }
         .dark-mode .highlight-subtle {
@@ -2130,20 +2133,6 @@
             opacity: 1;
         }
         
-        .modern-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(to bottom, #3b82f6, #93c5fd);
-            transition: height 0.3s ease-out;
-        }
-        
-        .modern-card:hover::after {
-            height: 100%;
-        }
         
         /* Card Header Enhancements */
         .card-header {
@@ -2998,14 +2987,14 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="w-full md:w-1/3 mb-6 md:mb-0 content-reveal delay-1">
-                    <img src="images/macha.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover profile-image-float transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105" loading="lazy">
+                    <img src="images/macha.jpg" alt="Meghanath Macha" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg mx-auto profile-image-hover profile-image-float transition-all duration-300 hover:shadow-xl" loading="eager" fetchpriority="high">
                 </div>
                 <div class="w-full md:w-2/3 md:pl-12">
                     <!-- Hero Content -->
                     <div class="flex flex-col text-center md:text-left justify-center h-full text-white relative z-10">
                         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 content-reveal delay-2">Meghanath Macha</h1>
                         <h2 class="text-xl md:text-2xl text-yellow-300 mb-4 md:mb-6 content-reveal delay-3">Behavioral foundation models and ML platforms</h2>
-                        <p class="text-base md:text-lg mb-6 content-reveal delay-4">
+                        <p class="text-base md:text-lg mb-6 max-w-2xl mx-auto md:mx-0 content-reveal delay-4">
                             I architect the Large Behavioral Model generating <span class="highlight-glow">10B+ daily predictions</span> across 1.8B+ devices for Fortune 500 marketing decisions. Previously led Adobe GenStudio's <span class="highlight-glow">guideline-aware AI systems</span>; 9 granted patents (15+ filed) in behavioral ML and GenAI.
                         </p>
 

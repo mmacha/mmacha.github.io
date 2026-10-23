@@ -55,6 +55,9 @@ jekyll serve
 bundle exec jekyll serve
 ```
 
+### Design checks
+The impeccable skill is installed at `.claude/skills/impeccable` (git-ignored, includes a 16MB binary). Run `.claude/skills/impeccable/scripts/impeccable detect <file-or-url>` for the anti-pattern detector; `/impeccable audit` runs the full audit playbook. A plain file server (`python3 -m http.server`) renders `index.html` but not the Notes pages, which need Jekyll for layouts and Liquid.
+
 ### Deployment
 The site is automatically deployed via GitHub Pages when changes are pushed to the `master` branch.
 

@@ -29,7 +29,7 @@
         :root {
             --bg: #ffffff;
             --fg: #1a202c;
-            --muted: #718096;
+            --muted: #5b6878;
             --rule: #e2e8f0;
             --link: #2b6cb0;
         }
@@ -71,15 +71,22 @@
         header.site nav a:hover, header.site .name:hover { color: var(--link); }
         a { color: var(--link); text-decoration: none; }
         a:hover { text-decoration: underline; }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+        ::selection { background: var(--link); color: var(--bg); }
         h1 {
             font-size: 30px;
             line-height: 1.2;
             font-weight: 700;
             margin: 0 0 6px;
             letter-spacing: -0.01em;
+            text-wrap: balance;
         }
         .meta { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
-        article p { margin: 0 0 1.25em; }
+        article p { margin: 0 0 1.25em; text-wrap: pretty; }
         article h2 { font-size: 20px; margin: 2em 0 0.6em; }
         article blockquote {
             margin: 1.5em 0;

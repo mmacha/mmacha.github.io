@@ -1,1 +1,18 @@
-theme: jekyll-theme-minimal
+title: Meghanath Macha
+url: https://mmacha.github.io
+permalink: /notes/:year/:month/:day/:title/
+markdown: kramdown
+exclude:
+  - CLAUDE.md
+  - AGENTS.md
+  - WARP.md
+  - INVESTMENT.md
+  - README.md
+  - feedback.md
+  - readme.txt
+  - debug.log
+  - tmp
+  - config
+  - investing_new.html
+  - .claude
+  - .gstack

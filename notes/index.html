@@ -1,0 +1,15 @@
+---
+layout: note
+title: Notes
+description: Short takes by Meghanath Macha, mostly on building AI systems. Opinions mine.
+---
+<h1>Notes</h1>
+<p class="intro">Short takes, mostly on building AI systems. Opinions mine.</p>
+<ul class="posts">
+{% for post in site.posts %}
+    <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    </li>
+{% endfor %}
+</ul>

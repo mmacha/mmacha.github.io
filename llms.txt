@@ -1,3 +1,6 @@
+---
+layout: null
+---
 # Meghanath Macha
 
 Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platforms.
@@ -31,3 +34,9 @@ Indian Institute of Technology Kharagpur.
 ## Patents
 
 9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy.
+
+## Notes
+
+Short takes, mostly on building AI systems: https://mmacha.github.io/notes/ (RSS: https://mmacha.github.io/notes/feed.xml)
+{% for post in site.posts %}
+- {{ post.title }} ({{ post.date | date: "%Y-%m-%d" }}): {{ post.url | absolute_url }}{% endfor %}

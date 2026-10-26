@@ -13,13 +13,13 @@ Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platf
 
 ## Now
 
-Leads AI and platform at ZeroToOne. Builds the Large Behavioral Model, a vertical foundation
+Leads AI and platform at ZeroToOne.AI. Builds the Large Behavioral Model, a vertical foundation
 model pretrained on sequences of physical and digital consumer behavior. It learns a
 representation of each ID, scores 1.7B+ IDs a day across 9,000+ behavioral categories, and
 refreshes every 24 hours; audiences, intent scores and custom models are downstream tasks on
 the same representation. Built Audience Builder, an agent that turns a plain-English brief into
 an inspectable audience definition over the model's outputs. Led technical diligence on
-ZeroToOne's acquisition of GroundTruth and WeatherBug; leads bringing the platforms and teams
+ZeroToOne.AI's acquisition of GroundTruth and WeatherBug; leads bringing the platforms and teams
 together.
 
 ## Previously
@@ -38,7 +38,7 @@ Indian Institute of Technology Kharagpur.
 ## Patents
 
 9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy. First-listed inventor on
-ZeroToOne's WO2025006073 (modeling user predisposition from location data).
+ZeroToOne.AI's WO2025006073 (modeling user predisposition from location data).
 
 ## Notes
 

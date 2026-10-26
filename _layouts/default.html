@@ -10,7 +10,7 @@
   {%- if page.date -%}{%- assign og_type = 'article' -%}{%- else -%}{%- assign og_type = 'website' -%}{%- endif -%}
 {%- else -%}
   {%- assign doc_title = page.title | default: site.title -%}
-  {%- assign doc_desc = page.description | default: 'Meghanath Macha, Head of AI & Platform at ZeroToOne.' -%}
+  {%- assign doc_desc = page.description | default: 'Meghanath Macha, Head of AI & Platform at ZeroToOne.AI.' -%}
   {%- assign share_title = doc_title -%}
   {%- assign share_desc = page.og_description | default: doc_desc -%}
   {%- assign og_type = page.og_type | default: 'website' -%}
@@ -109,7 +109,7 @@
       "https://bsky.app/profile/hereismacha.bsky.social",
       "https://blog.platform.zerotoone.ai/"
     ],
-    "description": "Head of AI & Platform at ZeroToOne. Builds vertical foundation models of consumer behavior and the ML platforms that serve them."
+    "description": "Head of AI & Platform at ZeroToOne.AI. Builds vertical foundation models of consumer behavior and the ML platforms that serve them."
   }
   </script>
 {%- if page.url == '/' or page.url == '/index.html' %}

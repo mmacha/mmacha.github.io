@@ -10,7 +10,7 @@ Ask most data teams how they build an audience and the answer is a project. Some
 
 That's backwards. An audience is not a model. It's a query over a model's predictions.
 
-The thing you should train once is a behavioral model. Feed it what people actually do, physically and digitally (where they go, what they do online), and have it predict likelihood across thousands of categories at once. Refresh it daily. Then an audience is a definition you write on top: high likelihood here, low there, active in this region. It's a filter, and you can read it.
+The thing you should train once is a behavioral foundation model. Feed it what people actually do, physically and digitally (where they go, what they do online), and have it predict likelihood across thousands of categories at once. Refresh it daily. Then an audience is a definition you write on top: high likelihood here, low there, active in this region. It's a filter, and you can read it.
 
 Once you flip it, a lot gets easier. A new audience costs a query, not a sprint. Definitions become checkable, because you can look at one and see exactly what it selects and why. Two audiences can be compared line by line instead of by squinting at overlap reports. And when the model gets better, every audience built on it gets better the same night, not just the one somebody remembered to retrain.
 

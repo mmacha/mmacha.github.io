@@ -6,7 +6,7 @@ description: The wrapper around the model matters more than people admit, and it
 
 The harness crowd has one true thing and one dumb thing.
 
-The true thing: the wrapper matters way more than people want to admit. Take one model, put it in five different harnesses, and the spread is bigger than the spread between the models themselves. Rankings flip. The guy who writes the loop decides more than the lab that trained the weights, which is uncomfortable if you spent $10B on the weights.
+The true thing: the wrapper matters way more than people want to admit. Take one model, put it in five different harnesses, and the spread is bigger than the spread between the models themselves. Rankings flip. The person who writes the loop decides more than the lab that trained the weights, which is uncomfortable if you spent $10B on the weights.
 
 The dumb thing is the conclusion people draw from it, which is that you should build a thick harness and sell it as a moat. Go look at who actually builds good harnesses. Anthropic, OpenAI, Cursor. They delete their own stuff constantly. Every piece of scaffolding you add is a workaround for something the model can't do this month (context resets, planners, reviewer agents, the 40 tools that should have been 2). Next month it can, and now your clever workaround is making it worse and you don't know because you never wrote an eval. Most harnesses in the wild have no evals. The whole field agreed the harness matters and then didn't bother measuring it.
 

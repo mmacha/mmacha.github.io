@@ -1,3 +1,5 @@
 .claude/
 .gstack/
 .playwright-mcp/
+_site/
+.jekyll-cache/

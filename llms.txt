@@ -37,7 +37,7 @@ Indian Institute of Technology Kharagpur.
 
 ## Patents
 
-9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy. First-listed inventor on
+10 granted patents, 15+ filed across behavioral ML, GenAI, and privacy. First-listed inventor on
 ZeroToOne.AI's WO2025006073 (modeling user predisposition from location data).
 
 ## Notes

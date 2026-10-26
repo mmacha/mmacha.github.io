@@ -13,10 +13,11 @@ Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platf
 
 ## Now
 
-Architects ZeroToOne's Large Behavioral Model, the platform unifying physical and digital
-behavioral traces across 1.8B+ devices and generating 10B+ daily predictions for Fortune 500
-marketing intelligence. Led technical diligence on ZeroToOne's acquisition of GroundTruth and
-WeatherBug; leads the platform integration.
+Leads AI and platform at ZeroToOne. Builds behavioral models from where people go and what they
+do online; one model scores 1.7B+ IDs a day across 9,000+ behavioral categories, and the
+audiences built on it refresh daily. Built Audience Builder, which turns plain-English audience
+requests into checkable definitions. Led technical diligence on ZeroToOne's acquisition of
+GroundTruth and WeatherBug; leads bringing the platforms and teams together.
 
 ## Previously
 
@@ -28,12 +29,13 @@ Adobe Research India.
 ## Research
 
 Carnegie Mellon Ph.D. in privacy-preserving behavioral modeling. Published in ISR, DMKD, KDD and
-Management Science with 300+ citations. M.Sc. and B.Sc. in Mathematics and Computing from the
+Management Science. M.Sc. and B.Sc. in Mathematics and Computing from the
 Indian Institute of Technology Kharagpur.
 
 ## Patents
 
-9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy.
+9 granted patents, 15+ filed across behavioral ML, GenAI, and privacy. First-listed inventor on
+ZeroToOne's WO2025006073 (modeling user predisposition from location data).
 
 ## Notes
 

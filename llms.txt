@@ -13,11 +13,14 @@ Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platf
 
 ## Now
 
-Leads AI and platform at ZeroToOne. Builds behavioral models from where people go and what they
-do online; one model scores 1.7B+ IDs a day across 9,000+ behavioral categories, and the
-audiences built on it refresh daily. Built Audience Builder, which turns plain-English audience
-requests into checkable definitions. Led technical diligence on ZeroToOne's acquisition of
-GroundTruth and WeatherBug; leads bringing the platforms and teams together.
+Leads AI and platform at ZeroToOne. Builds the Large Behavioral Model, a vertical foundation
+model pretrained on sequences of physical and digital consumer behavior. It learns a
+representation of each ID, scores 1.7B+ IDs a day across 9,000+ behavioral categories, and
+refreshes every 24 hours; audiences, intent scores and custom models are downstream tasks on
+the same representation. Built Audience Builder, an agent that turns a plain-English brief into
+an inspectable audience definition over the model's outputs. Led technical diligence on
+ZeroToOne's acquisition of GroundTruth and WeatherBug; leads bringing the platforms and teams
+together.
 
 ## Previously
 

@@ -174,7 +174,7 @@
       <a href="/#research">Research</a>
       <a href="/notes/"{% if is_note %} aria-current="page"{% endif %}>Notes</a>
       <a href="/#contact">Contact</a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-live="polite">Theme: System</button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-live="polite" aria-label="Theme: System. Switch to light.">System</button>
     </nav>
   </div>
 </header>
@@ -197,7 +197,7 @@
     function render() {
       var mode = current();
       var next = order[(order.indexOf(mode) + 1) % order.length];
-      btn.textContent = 'Theme: ' + names[mode];
+      btn.textContent = names[mode];
       btn.setAttribute('aria-label', 'Theme: ' + names[mode] + '. Switch to ' + names[next].toLowerCase() + '.');
     }
     function apply(mode) {

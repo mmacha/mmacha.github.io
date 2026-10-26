@@ -11,7 +11,7 @@ og_type: profile
         <h1 id="hero-title">Meghanath Macha</h1>
         <div class="hero-copy">
           <p class="hero-lead">I build foundation models of consumer behavior, from where people go to what they do online.</p>
-          <p class="hero-second">At ZeroToOne, I lead AI and platform. Our Large Behavioral Model is a vertical foundation model pretrained on sequences of physical and digital behavior. Downstream heads predict visits and intent, and the predictions are activated through ad platforms. I started out training the models and still design the systems. Much of my work now is the data, infrastructure and teams around them.</p>
+          <p class="hero-second">At ZeroToOne, I lead AI and platform. Our Large Behavioral Model is a vertical foundation model pretrained on sequences of physical and digital behavior, and everything we ship is a downstream task on it. I started out training the models and still design the systems. Much of my work now is the data, infrastructure and teams around them.</p>
         </div>
         <p class="role">Head of AI &amp; Platform, ZeroToOne</p>
       </div>
@@ -22,8 +22,8 @@ og_type: profile
   <section id="about" class="section wrap" aria-labelledby="about-title">
     <div class="section-head"><div></div><div><h2 id="about-title">About</h2></div></div>
     <div class="two-col"><div></div><div class="bio-content">
-      <p>ZeroToOne runs one vertical foundation model instead of a model per audience. It learns a representation of each ID from its behavioral sequence, scores 1.7B+ IDs a day across 9,000+ behavioral categories, and refreshes every 24 hours. Audiences, intent scores and custom models are downstream tasks on the same representation.</p>
-      <p>I led the technical diligence for <a href="https://www.prnewswire.com/news-releases/zerotooneai-acquires-groundtruth-to-deploy-at-scale-an-ai-driven-predictive-intelligence-platform-for-enterprise-decision-systems-302724815.html" target="_blank" rel="noopener noreferrer">GroundTruth and WeatherBug</a> and now lead bringing the platforms and teams together. Before that, I was a founding engineer on Adobe GenStudio, working on how generative AI could follow a company's brand guidelines.</p>
+      <p>ZeroToOne runs one vertical foundation model instead of a model per audience. It learns a representation of each ID from its behavioral sequence, scores 1.7B+ IDs a day across 9,000+ behavioral categories, and refreshes every 24 hours.</p>
+      <p>I led the technical diligence for <a href="https://www.prnewswire.com/news-releases/zerotooneai-acquires-groundtruth-to-deploy-at-scale-an-ai-driven-predictive-intelligence-platform-for-enterprise-decision-systems-302724815.html" target="_blank" rel="noopener noreferrer">GroundTruth and WeatherBug</a> and now lead the integration of the platforms and teams. Before that, I was a founding engineer on Adobe GenStudio, working on how generative AI could follow a company's brand guidelines.</p>
       <p>I have a PhD from Carnegie Mellon, where I worked on privacy-preserving models of location data. Papers in ISR, KDD, DMKD and Management Science.</p>
       <p class="personal">I live in California with my wife, daughter and our cat, Binxy.</p>
     </div></div>
@@ -33,8 +33,9 @@ og_type: profile
     <div class="section-head"><div></div><div><h2 id="work-title">Selected work</h2></div></div>
     <div class="work-list">
       <article class="work-item"><div class="work-number">01</div><div>
-        <h3>One foundation model, many audiences</h3>
-        <p>We used to train a separate classifier for each audience. Now a single behavioral foundation model produces predictions across thousands of categories, and audiences are queries over those predictions, refreshed daily and <a href="https://www.groundtruth.com/article/zerotoone-ai-dynamic-intent-prediction/" target="_blank" rel="noopener noreferrer">delivered inside the ad platform</a>.</p>
+        <h3>One foundation model, many products</h3>
+        <p>We used to train a separate classifier for each audience. Now a single behavioral foundation model is the shared layer, and the products are downstream tasks on it: predictive audiences refreshed daily and <a href="https://www.groundtruth.com/article/zerotoone-ai-dynamic-intent-prediction/" target="_blank" rel="noopener noreferrer">delivered inside the ad platform</a>, enrichment feeds of behavioral signals for a client's own data warehouse, and managed models for churn, customer value and next best action.</p>
+        <p>Outcomes from delivery flow back into training, so the model improves with use.</p>
       </div></article>
       <article class="work-item"><div class="work-number">02</div><div>
         <h3>Getting AI to follow brand rules</h3>
@@ -42,7 +43,7 @@ og_type: profile
       </div></article>
       <article class="work-item"><div class="work-number">03</div><div>
         <h3>Building audiences from plain English</h3>
-        <p>Audience requests used to go through engineers. Now an agent takes a plain-English brief, grounds it in our prediction categories and taxonomy, and emits an audience definition over the model's outputs. The definition stays visible, so a planner can inspect what the agent understood before using it.</p>
+        <p>Audience requests used to go through engineers. Now an agent takes a plain-English brief, grounds it in our prediction taxonomy, and emits an audience definition over the model's outputs. The definition stays visible, so a planner can inspect what the agent understood before using it.</p>
       </div></article>
     </div>
   </section>

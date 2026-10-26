@@ -84,6 +84,9 @@ The site is automatically deployed via GitHub Pages when changes are pushed to t
 - Tokens on `:root` in `css/site.css` (`--paper --ink --ink-soft --muted --hairline --accent --accent-light --white`); dark values under `html[data-theme="dark"]` and `@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) }`
 - Serif: `"Newsreader", Georgia, serif` for h1, h2, `.hero-lead`, `.contact-lead`, `.work-number`; regular file preloaded
 - Muted text (#5a6560 light, #a3aca6 dark) never below 12px; skip link has its own hover/focus colors
+- Reading measure: body paragraphs capped so lines stay under ~75 characters (About 550px, work items 520px, hero 580px, notes 620px)
+- Secondary links ("All publications", "More notes", "All notes", "RSS", "Book 30 minutes") all use `.text-link`; list links (pubs, notes) carry a hairline-colored underline at rest
+- Notes pages left-align to the homepage content column (`margin-left: 222px` at ≥800px); the theme button shows only the mode word with the full state in `aria-label`
 - Legacy pages keep Plus Jakarta Sans and their own CSS
 
 ## Analytics Configuration

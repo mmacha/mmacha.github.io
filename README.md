@@ -30,7 +30,3 @@ The [impeccable](https://github.com/pbakaus/impeccable) design detector is insta
 ```
 
 All pages now use Liquid layouts; build with Jekyll before scanning (a plain file server on the repo root shows raw Liquid).
-
-### Updates
-
-- 2026-11-09 — Published note [A good company is not always a good investment](https://mmacha.github.io/notes/2026/11/09/a-good-company-is-not-always-a-good-investment/) (`_posts/2026-11-09-a-good-company-is-not-always-a-good-investment.md`).

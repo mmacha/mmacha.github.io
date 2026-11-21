@@ -2,7 +2,7 @@
 layout: default
 title: "Meghanath Macha | AI & Platform"
 description: "Meghanath Macha builds vertical foundation models of consumer behavior and the ML platforms that serve them. Head of AI & Platform at ZeroToOne.AI."
-og_description: "I build products that predict consumer behavior."
+og_description: "I architect behavioral foundation models and the platforms that run them in production."
 og_type: profile
 ---
   <section id="top" class="hero wrap" aria-labelledby="hero-title">
@@ -10,12 +10,35 @@ og_type: profile
       <div>
         <h1 id="hero-title">Meghanath Macha</h1>
         <div class="hero-copy">
-          <p class="hero-lead">I build products that predict consumer behavior.</p>
-          <p class="hero-second">At <a href="https://www.zerotoone.ai/" target="_blank" rel="noopener noreferrer">ZeroToOne.AI</a>, I lead AI and platform. We train a shared model on where people go and what they do online, then use it to predict visits, intent, and other outcomes. I started out training models and still design the systems that run them. My work now also includes building the data infrastructure and leading the teams behind our products.</p>
+          <p class="hero-lead">I architect behavioral foundation models and the platforms that run them in production.</p>
+          <p class="hero-second">At <a href="https://www.zerotoone.ai/" target="_blank" rel="noopener noreferrer">ZeroToOne.AI</a>, I lead AI and platform. We train a spatiotemporal model on where people go and what they do online to predict visits and intent. We score about 3 billion device IDs a day. I design the inference, identity, and data systems that serve those predictions and lead the teams integrating GroundTruth and WeatherBug.</p>
         </div>
         <p class="role">Head of AI &amp; Platform, ZeroToOne.AI</p>
       </div>
       <img class="portrait" src="/images/macha.jpg" alt="Meghanath Macha" width="800" height="800" loading="eager" fetchpriority="high">
+    </div>
+  </section>
+
+  <section id="work" class="section wrap" aria-labelledby="work-title">
+    <div class="section-head"><div></div><div><h2 id="work-title">Selected work</h2></div></div>
+    <div class="work-list">
+      <article class="work-item"><div class="work-number">01</div><div>
+        <h3>One model, many products</h3>
+        <p>We replaced separate audience classifiers with a shared model that powers <a href="https://www.groundtruth.com/article/zerotoone-ai-dynamic-intent-prediction/" target="_blank" rel="noopener noreferrer">daily predictive audiences</a> and provides a starting point for warehouse enrichment and models for churn, customer value, and next best action. If a retailer’s campaign rewards cheap clicks, training on those clicks would teach the model to predict clicks instead of store visits. We <a href="/notes/2026/10/19/a-model-is-not-a-bidder/">keep bidding separate</a> so a visit score means the same thing across campaigns. In March 2026, <a href="https://martech-pulse.com/text-interviews/horizon-media-evp-head-of-platform-partnerships-john-koenigsbergs-exclusive-interview-with-martech-pulse-on-predictive-ai/" target="_blank" rel="noopener noreferrer">Horizon Media reported</a> 48% greater visitation efficiency versus baseline in one pilot combining our predictions with its own audience intelligence and campaign design.</p>
+        <p>We generate embeddings on Vertex AI GPUs and score audiences on CPUs, so scoring can run without waiting for GPU capacity once the embeddings are ready. Before releasing a model update, we check its predictions across audience categories and time windows. Read more about <a href="https://blog.platform.zerotoone.ai/blog/what-we-learned-building-our-ml-platform/" target="_blank" rel="noopener noreferrer">how we built the ML platform</a>.</p>
+      </div></article>
+      <article class="work-item"><div class="work-number">02</div><div>
+        <h3>Getting AI to follow brand rules</h3>
+        <p>A draft can sound right and still miss a required trademark symbol. At Adobe GenStudio, I built the verification layer. We represented brand guidelines in a knowledge graph and checked drafts separately from generation. In <a href="https://experienceleague.adobe.com/en/docs/genstudio-for-performance-marketing/user-guide/guidelines/brand-validation" target="_blank" rel="noopener noreferrer">GenStudio</a>, reviewers could see which rule a draft failed, revise the asset, and rerun the check before sending it for approval. The verification layer <a href="https://news.adobe.com/news/2024/10/101424-genstudio-for-performance-marketing" target="_blank" rel="noopener noreferrer">shipped in October 2024</a> with GenStudio for Performance Marketing.</p>
+      </div></article>
+      <article class="work-item"><div class="work-number">03</div><div>
+        <h3>Audiences you can describe and check</h3>
+        <p>When our audience requests went through engineers, it took about two weeks to get a usable audience. With Audience Builder, a planner describes who they want to reach and the agent writes a definition over the model’s predictions. An answer can sound reasonable while dropping a constraint like geography. Planners can read and correct the filters before activation and reuse the definition. In GroundTruth Ads Manager, custom audiences are available within 24 hours.</p>
+      </div></article>
+      <article class="work-item"><div class="work-number">04</div><div>
+        <h3>Deciding what to buy and what to build</h3>
+        <p>I led technical diligence on what to integrate, what to rebuild, and where the data and identity systems overlapped before ZeroToOne.AI acquired <a href="https://www.prnewswire.com/news-releases/zerotooneai-acquires-groundtruth-to-deploy-at-scale-an-ai-driven-predictive-intelligence-platform-for-enterprise-decision-systems-302724815.html" target="_blank" rel="noopener noreferrer">GroundTruth and WeatherBug</a>. I now lead the integration, which has to keep two live ad platforms running. We moved legacy custom audiences to Audience Builder and consolidated GroundTruth’s direct audience delivery, cutting redundant compute while keeping existing audience IDs stable for live campaigns. In <a href="https://help.groundtruth.com/hc/en-us/articles/51864249180307-Predictive-AI-Audiences-from-ZeroToOne-AI" target="_blank" rel="noopener noreferrer">GroundTruth Ads Manager</a>, we grew the predictive catalog from about 60 to more than 1,500 segments and made them available alongside standard visitation audiences so advertisers could compare them in the same campaign workflow.</p>
+      </div></article>
     </div>
   </section>
 
@@ -24,7 +47,16 @@ og_type: profile
     <div class="two-col"><div></div><div>
       <ul class="note-recent">
 {%- for post in site.posts limit:3 %}
-        <li class="note-recent-row"><a href="{{ post.url }}">{{ post.title }}</a><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
+        {% assign thesis = post.homepage_summary | default: post.description %}
+        <li class="note-recent-row">
+          <div class="note-recent-copy">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            {% if thesis and thesis != empty %}
+            <p>{{ thesis | strip_html | escape }}</p>
+            {% endif %}
+          </div>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        </li>
 {%- endfor %}
       </ul>
       <p class="notes-bottom"><a href="/notes/">More notes</a></p>
@@ -34,29 +66,9 @@ og_type: profile
   <section id="about" class="section wrap" aria-labelledby="about-title">
     <div class="section-head"><div></div><div><h2 id="about-title">About</h2></div></div>
     <div class="two-col"><div></div><div class="bio-content">
-      <p>I have taken models from research into production at the Carnegie Mellon spin-out that became ZeroToOne.AI, at Adobe GenStudio, and again at ZeroToOne.AI with the Large Behavioral Model.</p>
-      <p>I led the technical diligence for <a href="https://www.prnewswire.com/news-releases/zerotooneai-acquires-groundtruth-to-deploy-at-scale-an-ai-driven-predictive-intelligence-platform-for-enterprise-decision-systems-302724815.html" target="_blank" rel="noopener noreferrer">GroundTruth and WeatherBug</a> and now lead the integration of the platforms and teams. Before that, I was a founding engineer on Adobe GenStudio, where I built the layer that keeps GenAI content on-brand, grounding generation in a knowledge graph of the brand's guidelines rather than in a prompt.</p>
-      <p>I have a PhD from Carnegie Mellon, where I worked on privacy-preserving models of location data. Papers in ISR, KDD, DMKD and Management&nbsp;Science.</p>
+      <p>I’ve taken models from research into production at the Carnegie Mellon spin-out that became ZeroToOne.AI, as a founding engineer on Adobe GenStudio, and again after returning to ZeroToOne.AI to build the Large Behavioral Model. I have a PhD in Information Systems from Carnegie Mellon, where I worked on privacy-preserving models of location data. I’ve published in ISR, KDD, DMKD, and Management Science.</p>
+      <p>I design systems so people can inspect what they’re about to use. That means keeping audience filters readable, checking brand rules separately from generation, and keeping the meaning of an intent score consistent across products.</p>
     </div></div>
-  </section>
-
-  <section id="work" class="section wrap" aria-labelledby="work-title">
-    <div class="section-head"><div></div><div><h2 id="work-title">Selected work</h2></div></div>
-    <div class="work-list">
-      <article class="work-item"><div class="work-number">01</div><div>
-        <h3>One model, many products</h3>
-        <p>We used to train a separate classifier for each audience. Now one vertical foundation model, trained on sequences of physical and digital behavior and scoring 1.7B+ IDs a day, is the base layer: predictive audiences refreshed daily and <a href="https://www.groundtruth.com/article/zerotoone-ai-dynamic-intent-prediction/" target="_blank" rel="noopener noreferrer">delivered inside the ad platform</a>, enrichment feeds for a client's own data warehouse, and managed models for churn, customer value and next best action. <a href="https://martech-pulse.com/text-interviews/horizon-media-evp-head-of-platform-partnerships-john-koenigsbergs-exclusive-interview-with-martech-pulse-on-predictive-ai/" target="_blank" rel="noopener noreferrer">Horizon Media</a>, which runs the model inside HorizonOS, reported 48% better visitation efficiency in a recent pilot, and campaign outcomes flow back into training.</p>
-      </div></article>
-      <article class="work-item"><div class="work-number">02</div><div>
-        <h3>Getting AI to follow brand rules</h3>
-        <p>At Adobe GenStudio, each brand rule was an object in a knowledge graph that generated content could be tested against. Verification ran as a separate step from generation, so the rules did not depend on which model wrote the content, and a reviewer could see which rule an asset failed. It was the basis for a fully AI-generated marketing campaign and cut content production cycle time by 60%.</p>
-      </div></article>
-      <article class="work-item"><div class="work-number">03</div><div>
-        <h3>Audiences you can describe and check</h3>
-        <p>Audience requests used to go through engineers and took about two weeks. Now a planner describes who they want to reach, the agent turns that into an audience definition over the model's predictions, and the planner reviews what the system understood before using it. Time to a new audience is 24 to 48 hours, set by the daily scoring refresh rather than by the agent. The definition is a readable object rather than a trained artifact, so it can be checked, compared and reused across products.</p>
-      </div></article>
-
-    </div>
   </section>
 
   <section id="background" class="section wrap" aria-labelledby="background-title">
@@ -91,8 +103,7 @@ og_type: profile
   <section id="contact" class="section wrap contact" aria-labelledby="contact-title">
     <div class="section-head"><div></div><div><h2 id="contact-title">Contact</h2></div></div>
     <div class="two-col"><div></div><div>
-      <p class="contact-lead">If something here interests you, write to me.</p>
-      <p class="contact-sub">Advisory. Speaking.</p>
+      <p class="contact-lead">Architecture advisory. Technical diligence. Speaking.</p>
       <div class="contact-links">
         <a href="mailto:meghanath.macha@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/meghanathmacha/" target="_blank" rel="noopener noreferrer">LinkedIn</a>

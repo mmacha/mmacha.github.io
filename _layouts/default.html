@@ -166,20 +166,25 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">Meghanath Macha<span>.</span></a>
+    <a class="brand" href="/">Meghanath Macha<span aria-hidden="true">.</span></a>
     <nav class="nav" aria-label="Main navigation">
       <a href="/#work">Work</a>
       <a href="/#research">Research</a>
-      <a href="/notes/"{% if is_note %} aria-current="page"{% endif %}>Notes</a>
+      <a href="/notes/"{% if page.url == '/notes/' or page.url == '/notes/index.html' %} aria-current="page"{% elsif is_note %} aria-current="location"{% endif %}>Notes</a>
       <a href="/#contact">Contact</a>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-live="polite" aria-label="Theme: System. Switch to light.">Theme</button>
     </nav>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-live="polite" aria-label="Theme: System. Switch to light.">Theme: System</button>
   </div>
 </header>
 <main id="main">
 {{ content }}
 </main>
-<footer class="site-footer"><div class="wrap"><span>&copy; {{ 'now' | date: '%Y' }} Meghanath Macha</span><span>Personal notes and opinions, not my employer's.</span></div></footer>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; {{ 'now' | date: '%Y' }} Meghanath Macha.</span>
+    <span>Personal notes and opinions, not my employer's.</span>
+  </div>
+</footer>
 <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
@@ -195,7 +200,7 @@
     function render() {
       var mode = current();
       var next = order[(order.indexOf(mode) + 1) % order.length];
-      btn.textContent = names[mode];
+      btn.textContent = 'Theme: ' + names[mode];
       btn.setAttribute('aria-label', 'Theme: ' + names[mode] + '. Switch to ' + names[next].toLowerCase() + '.');
     }
     function apply(mode) {

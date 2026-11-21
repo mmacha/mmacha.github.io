@@ -2,6 +2,7 @@
 layout: post
 title: "Where did the ML research go?"
 date: 2026-11-17
+homepage_summary: Foundation models shift ML research toward designing harder tasks, measuring what agents learn, and helping them keep learning from experience.
 ---
 
 I was talking to a friend who builds RL environments for frontier AI labs. He mentioned that a single training task can cost $1,000–$3,000, and he expects that number to go up as models get better. I found that surprising. We've spent years making training data cheaper, and now apparently a single problem can be worth thousands of dollars.

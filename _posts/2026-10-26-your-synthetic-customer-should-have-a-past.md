@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Your synthetic customer should have a past
+homepage_summary: Simulating customers from observed behavior makes predictions you can check against what those customers actually do.
 description: Persona agents tell you what a described person would say. A behavioral model tells you what an observed person would do, and you can check it.
 ---
 

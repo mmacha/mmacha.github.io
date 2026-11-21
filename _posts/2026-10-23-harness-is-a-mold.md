@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The harness is a mold, not a product
+homepage_summary: Keep agent scaffolding replaceable and use the traces it captures to train smaller models on your own tasks.
 description: The wrapper around the model matters more than people admit, and it still keeps getting thrown away. Both are true, and the resolution is a mold.
 ---
 

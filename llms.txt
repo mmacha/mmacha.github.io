@@ -3,7 +3,8 @@ layout: null
 ---
 # Meghanath Macha
 
-Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platforms.
+Head of AI & Platform at ZeroToOne.AI. Architects behavioral foundation models and the
+platforms that run them in production, including inference, identity, and data infrastructure.
 
 - Website: https://mmacha.github.io/
 - LinkedIn: https://www.linkedin.com/in/meghanathmacha/
@@ -13,21 +14,22 @@ Head of AI & Platform at ZeroToOne.AI. Behavioral foundation models and ML platf
 
 ## Now
 
-Leads AI and platform at ZeroToOne.AI. Builds the Large Behavioral Model, a vertical foundation
-model pretrained on sequences of physical and digital consumer behavior. It learns a
-representation of each ID, scores 1.7B+ IDs a day across 9,000+ behavioral categories, and
-refreshes every 24 hours; audiences, intent scores and custom models are downstream tasks on
-the same representation. Built Audience Builder, an agent that turns a plain-English brief into
-an inspectable audience definition over the model's outputs. Led technical diligence on
-ZeroToOne.AI's acquisition of GroundTruth and WeatherBug; leads bringing the platforms and teams
-together.
+Leads AI and platform at ZeroToOne.AI. Builds the Large Behavioral Model, a shared foundation
+model trained on sequences of physical and digital consumer behavior. In November 2026,
+ZeroToOne.AI scored about 3 billion device IDs a day. The team checks model updates across product uses before release.
+GroundTruth Ads Manager offers more than 1,500 predictive audience segments that refresh daily.
+
+Built Audience Builder, an agent that turns a plain-English brief into an inspectable
+audience definition. Led technical diligence on the GroundTruth and WeatherBug acquisition
+and now leads platform integration. The team consolidated GroundTruth’s direct audience
+delivery and preserved existing audience IDs for campaigns.
 
 ## Previously
 
-At Adobe, led GenStudio's guideline-aware AI systems, delivering semantic knowledge graph
-grounding that enabled Adobe's first fully AI-generated marketing campaign and a 60% content
-velocity improvement. Earlier, founding ML engineer at ZeroToOne.AI and research scientist at
-Adobe Research India.
+Founding engineer on Adobe GenStudio, where he built the verification layer that ran
+separately from content generation and let reviewers see which rules an asset failed.
+The brand check shipped with GenStudio for Performance Marketing in October 2024. Earlier, founding ML engineer at the Carnegie Mellon
+spin-out that became ZeroToOne.AI and research scientist at Adobe Research India.
 
 ## Research
 

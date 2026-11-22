@@ -2,7 +2,7 @@
 
 Static Jekyll site for [mmacha.github.io](https://mmacha.github.io), deployed by GitHub Pages from `master`.
 
-- `_layouts/default.html` — shared head (meta, GA4, JSON-LD), header with 3-state theme button, footer
+- `_layouts/default.html` — shared head (meta, GA4, JSON-LD), header with 3-state theme button, and footer with authorship and maintenance disclosure
 - `css/site.css` — all styles for the homepage and Notes (cream paper, Newsreader serif, light/dark tokens)
 - `fonts/newsreader-*.woff2` — self-hosted Newsreader (SIL OFL), latin subset
 - `index.html` — homepage with Selected work, Notes, background, research, and contact. Recent Notes are generated from `site.posts`.

@@ -15,12 +15,13 @@ platforms that run them in production, including inference, identity, and data i
 ## Now
 
 Leads AI and platform at ZeroToOne.AI. Builds the Large Behavioral Model, a shared foundation
-model trained on sequences of physical and digital consumer behavior. In November 2026,
-ZeroToOne.AI scored about 3 billion device IDs a day. The team checks model updates across product uses before release.
-GroundTruth Ads Manager offers more than 1,500 predictive audience segments that refresh daily.
+model trained on sequences of physical and digital consumer behavior. ZeroToOne.AI scores
+more than 1.7 billion device IDs a day. Weekly retrains must clear ranking and lift
+thresholds across category levels and prediction horizons for automatic promotion.
+GroundTruth’s predictive audience catalog expanded from 40 audiences at launch to more than 1,500.
 
 Built Audience Builder, an agent that turns a plain-English brief into an inspectable
-audience definition. Led technical diligence on the GroundTruth and WeatherBug acquisition
+audience definition. The system checks category codes and time windows, then verifies that the saved filters match those used for sizing. Led technical diligence on the GroundTruth and WeatherBug acquisition
 and now leads platform integration. The team consolidated GroundTruth’s direct audience
 delivery and preserved existing audience IDs for campaigns.
 

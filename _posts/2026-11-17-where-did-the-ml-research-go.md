@@ -2,17 +2,17 @@
 layout: post
 title: "Where did the ML research go?"
 date: 2026-11-17
-homepage_summary: Foundation models shift ML research toward designing harder tasks, measuring what agents learn, and helping them keep learning from experience.
+homepage_summary: Training loops are becoming routine engineering; the real ML research moved into ungameable verifiers and reward integrity.
 ---
 
-I was talking to a friend who builds RL environments for frontier AI labs. He mentioned that a single training task can cost $1,000–$3,000, and he expects that number to go up as models get better. I found that surprising. We've spent years making training data cheaper, and now apparently a single problem can be worth thousands of dollars.
+For a decade, machine learning scaled by driving the marginal cost of a training example toward zero. Scrape more text, log more clicks, ingest more passive exhaust. Recently, a friend who builds RL environments for frontier AI labs told me a single training task now costs $1,000 to $3,000, and he expects that price to climb as models get stronger.
 
-He also mentioned something interesting. With how capable foundation models have become, a lot of RL is starting to look like an engineering problem. Package an environment in Docker, define a reward, run rollouts, and train.
+In the same conversation, he noted that RL itself is starting to look like routine engineering. Package an environment in Docker, attach a reward function, run rollouts, and update weights. Those two observations sit in direct contradiction. If the training loop is commoditized infrastructure, why does one problem cost three thousand dollars?
 
-That got me thinking about something else. There's been a lot of discussion about how foundation models have made traditional ML research less relevant. Why train a specialized model when a general-purpose one can already do the job?
+The money does not pay for the algorithm or the containers. It pays for reward integrity. Once a policy is capable enough, it stops solving the spirit of a task and starts exploiting every crack in the evaluator. Authoring a stateful environment with deterministic verifiers and edge-case checks that a frontier model cannot game is slow, adversarial work. Every time the base model improves, existing evaluations collapse into shortcuts. The bottleneck is no longer generating rollouts; it is proving that a passing rollout actually solved the problem.
 
-But I wonder if we're missing the other side of this. RL, online learning, continual adaptation, curriculum design. None of these are new ideas. But until recently, relatively few companies had the models, infrastructure, or economic incentive to work on them at scale. Now everyone building capable agents has to think about them.
+That cost structure exposes a split that most commentary misses. People argue that foundation models made traditional ML research obsolete, or conversely that every team building agents now has to solve continual RL. Neither holds up. Most applied agent teams call frozen APIs, iterate on harnesses, and ship retrieval. They are not updating weights. Only two groups face this research bottleneck at scale: frontier labs and vertical platforms with proprietary production feedback loops.
 
-And the problems are far from solved. How do you find tasks that challenge an increasingly capable model? How do you know it learned something rather than just gaming the reward? How does a deployed model keep learning without forgetting what it already knows?
+Frontier labs pay $3,000 per synthetic task because they do not own the downstream world. Applied platforms have the opposite problem. We already operate inside live environments with massive streams of real outcomes, but the rewards are sparse, delayed, and distorted by local incentives. Train a behavioral model on cheap clicks, and it learns to harvest clicks rather than predict real visits. Grade generated output with a loose prompt, and it learns to match the tone while dropping the hard constraint. In both settings, the failure mode is identical: a capable optimizer finding the cheapest path through a leaky reward.
 
-Maybe foundation models haven't reduced the amount of interesting ML research as much as they've changed where it happens. I find that quite encouraging. The models are getting better, but figuring out how they should learn from experience still seems wide open.
+ML research did not disappear when foundation models got good. It moved out of model architectures and into environments, verifiers, and feedback loops. Running the training loop is increasingly an engineering problem. Designing rewards that measure what you actually care about, and keeping them ungameable as the system adapts, is the research problem now.

@@ -16,7 +16,7 @@ platforms that run them in production, including inference, identity, and data i
 
 Leads AI and platform at ZeroToOne.AI. Builds the Large Behavioral Model, a shared foundation
 model trained on sequences of physical and digital consumer behavior. ZeroToOne.AI scores
-more than 1.7 billion device IDs a day. Weekly retrains must clear ranking and lift
+billions of IDs a day. Weekly retrains must clear ranking and lift
 thresholds across category levels and prediction horizons for automatic promotion.
 GroundTruth’s predictive audience catalog expanded from 40 audiences at launch to more than 1,500.
 
